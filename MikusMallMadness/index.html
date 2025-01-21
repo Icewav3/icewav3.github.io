@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
     <title>Miku's Mall Madness Demo</title>
-    <link href="../style.css" rel="stylesheet"> <!-- Link to your main CSS file -->
+    <link href="../style.css" rel="stylesheet">
 </head>
 <body>
 <div class="container">
@@ -22,7 +22,43 @@
 
     <main>
         <h1>Miku's Mall Madness Demo</h1>
-        <p>This game </p><!-- embed is +40px for some reason -->
+        <h4>
+            <u>
+                <a href="#gameIframe">
+                    You can click me to skip to the bottom of the page for the demo.
+                </a>
+            </u>
+        </h4>
+        <p>This is a C# Unity game was made in under 3 weeks with 11 students.</p>
+        <h2>
+            My role in this project:
+        </h2>
+        <p>
+            I was the project manager/coordinator and one of the programmers. During this project, I decided to focus
+            more on leading the team rather than being a lead programmer. I had assigned a lead programmer and lead
+            artist.
+        </p>
+        <h3>
+            My responsibilities included:
+        </h3>
+        <ul>
+            <li>Facilitating team discussions</li>
+            <li>Handling conflict between members</li>
+            <li>Ensuring everyone felt comfortable being part of the team environment</li>
+            <li>Keeping scope in check</li>
+            <li>Managing the project's timeline and deadlines</li>
+            <li>Ensuring the art team and programmer team communicated effectively</li>
+            <li>Facilitating Key Design Decisions through team discussion</li>
+            <li>The success of the project</li>
+        </ul>
+
+
+        <h2>Controls:</h2>
+        <p>
+            Press in the direction you want to move, and tap on the buttons you want to interact with.
+            Attacks will only work when targeting an enemy (the opposing side of miku on screen).
+            Miku's ultimate attack will only work when targeting herself as it is a healing ability.
+        </p>
         <div class="game-container">
             <iframe
                     id="gameIframe"
@@ -30,8 +66,9 @@
                     title="Miku's Mall Madness">
             </iframe>
         </div>
+        <!-- this handles desktop vs mobile version-->
         <script>
-            const isMobile = /Mobi|Android/i.test(navigator.userAgent);
+            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
             const iframe = document.getElementById('gameIframe');
             iframe.src = isMobile ? "MikusMallMadnessGameMobile.html" : "MikusMallMadnessGameDesktop.html";
         </script>
@@ -41,8 +78,6 @@
                 The game requires JavaScript to run. Please enable JavaScript in your browser to play the game.
             </p>
         </noscript>
-        <p>Press in the direction you want to move, or on the buttons you want to interact with. Attacks need to be
-            targeting an enemy.</p>
     </main>
 
     <!-- Footer section -->
