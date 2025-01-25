@@ -6,10 +6,11 @@
 	--container-border-color: #4db8ff;
 	--primary-text-color: #ffffff;
 	--secondary-text-color: #4db8ff;
+	--tertiary-text-color: #ffd700;
+	--link-hover-color: #ffec99;
 	--padding-size: 1vh;
 	--blur-radius: 100px;
 	--gradient-strength: 150%;
-	--link-hover-color: #0073b1;
 }
 
 * {
@@ -126,7 +127,7 @@ footer .socials {
 
 /* Generic link styling */
 a {
-	color: var(--secondary-text-color);
+	color: var(--tertiary-text-color);
 	text-decoration: underline;
 	transition: color 0.3s;
 }
