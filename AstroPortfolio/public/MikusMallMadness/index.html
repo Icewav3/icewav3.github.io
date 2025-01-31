@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Miku's Mall Madness Demo</title>
+    <link href="../style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <div class="background-light"></div>
+    <div class="background-light"></div>
+    <!-- Navigation for returning to other website sections -->
+    <header>
+        <nav class="button-container">
+            <button onclick="window.location.href='../index.html'">Overview</button>
+            <button onclick="window.location.href='../projects.html'">Projects</button>
+            <button onclick="window.location.href='../experience.html'">Experience</button>
+            <button onclick="window.location.href='../aboutMe.html'">About me</button>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Miku's Mall Madness Demo</h1>
+        <h5>
+            <u>
+                <a href="#gameIframe">
+                    You can click me to skip to the bottom of the page for the demo.
+                </a>
+            </u>
+        </h5>
+        <p>This is a C# Unity game was made in under 3 weeks with 11 students.</p>
+        <h2>
+            My role in this project:
+        </h2>
+        <p>
+            I was the project manager/coordinator and one of the programmers. During this project, I decided to focus
+            more on leading the team rather than being a lead programmer. I had assigned a lead programmer and lead
+            artist.
+        </p>
+        <h3>
+            My responsibilities included:
+        </h3>
+        <ul>
+            <li>Facilitating team discussions</li>
+            <li>Handling conflict between members</li>
+            <li>Ensuring everyone felt comfortable being part of the team environment</li>
+            <li>Keeping scope in check</li>
+            <li>Managing the project's timeline and deadlines</li>
+            <li>Ensuring the art team and programmer team communicated effectively</li>
+            <li>Facilitating Key Design Decisions through team discussion</li>
+            <li>The success of the project</li>
+        </ul>
+
+        <h2>Controls:</h2>
+        <p>
+            Press in the direction you want to move, and tap on the buttons you want to interact with.
+            Attacks will only work when targeting an enemy (the opposing side of miku on screen).
+            Miku's ultimate attack will only work when targeting herself as it is a healing ability.
+        </p>
+        <!--beginning of game -->
+        <div class="game-container">
+            <iframe
+                    id="gameIframe"
+                    src=""
+                    title="Miku's Mall Madness">
+            </iframe>
+        </div>
+        <!-- this handles desktop vs mobile version-->
+        <script>
+            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
+            const iframe = document.getElementById('gameIframe');
+            iframe.src = isMobile ? "MikusMallMadnessGameMobile.html" : "MikusMallMadnessGameDesktop.html";
+        </script>
+        <!-- Fallback message if JavaScript is disabled -->
+        <noscript>
+            <p style="color: var(--primary-text-color); text-align: center;">
+                The game requires JavaScript to run. Please enable JavaScript in your browser to play the game.
+            </p>
+        </noscript>
+    </main>
+    <!--end of game-->
+
+    <h2>
+        <!--maybe add full doc here?-->
+    </h2>
+    <!-- Footer section -->
+    <div class="push"></div>
+
+    <footer>
+        <button onclick="window.location.href='../projects.html'">Back to Projects</button>
+    </footer>
+</div>
+</body>
+</html>
