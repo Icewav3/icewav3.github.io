@@ -1,0 +1,23 @@
+{
+  "name": "icewav3.github.io",
+  "version": "1.0.0",
+  "description": "My portfolio website",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Icewav3/icewav3.github.io.git"
+  },
+  "keywords": [
+    "\"Cole\"",
+    "\"Dorman\""
+  ],
+  "author": "Cole Dorman",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Icewav3/icewav3.github.io/issues"
+  },
+  "homepage": "https://github.com/Icewav3/icewav3.github.io#readme"
+}
