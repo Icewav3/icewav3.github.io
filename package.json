@@ -1,30 +1,14 @@
 {
-  "name": "icewav3.github.io",
-  "version": "1.0.0",
-  "description": "My portfolio website",
+  "name": "astroportfolio",
   "type": "module",
+  "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
     "build": "astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Icewav3/icewav3.github.io.git"
-  },
-  "keywords": [
-    "Cole",
-    "Dorman"
-  ],
-  "author": "Cole Dorman",
-  "license": "ISC",
   "dependencies": {
-    "astro": "^4.0.0"
-  },
-  "bugs": {
-    "url": "https://github.com/Icewav3/icewav3.github.io/issues"
-  },
-  "homepage": "https://github.com/Icewav3/icewav3.github.io#readme"
+    "astro": "^5.1.10"
+  }
 }
