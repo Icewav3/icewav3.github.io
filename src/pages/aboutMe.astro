@@ -1,73 +1,29 @@
 ﻿---
-import '../assets/global.css';
-import '../assets/fontawesome/css/fontawesome.css';
-import '../assets/fontawesome/css/brands.css';
+import BaseLayout from '../components/BaseLayout.astro';
 ---
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Cole Dorman's Portfolio</title>
-</head>
-<body>
-<!-- Background styling -->
-<div class="container">
-    <div class="background-light"></div>
-    <div class="background-light"></div>
-    <header>
-        <nav class="button-container">
-            <!-- Navigation links -->
-            <button onclick="window.location.href='/index'">Overview</button>
-            <button onclick="window.location.href='/projects'">Projects</button>
-            <button onclick="window.location.href='/experience'">Experience</button>
-            <button onclick="window.location.href='/aboutMe'">About me</button>
-        </nav>
-    </header>
-
-    <main>
-        <section id="intro">
-            <!-- Introduction text -->
-            <h1>Hello!</h1>
-            <p>
-                My name is Cole Dorman, I am currently a
-                <a href="https://www.rrc.ca/">Red River College</a>
-                student studying
-                <a href="https://www.rrc.ca/explore/program/game-development-programming/">Game Development</a>
-                as well as leading projects in our class.
-            </p>
-            <p>
-                I am passionate about all facets of game development, from design to programming. I have experience
-                in both Unity and Unreal Engine, and I am currently learning C# and C++. I also enjoy aspects of
-                project management, as it's very rewarding to help everyone come together to create something great.
-            </p>
-            <p>
-                I believe balancing is an extremely core component of any game, and without it even games filled with
-                content can feel empty. I also believe it is the developer's job to account for human nature of
-                tending to "optimize the fun out of games", and I try to bring that into my projects.
-            </p>
-            <p>
-                Outside of work, I enjoy playing board games or video games, as well as mountain biking & trail riding.
-                Beyond those I also enjoy hiking and the scent of forest.
-            </p>
-        </section>
-    </main>
-
-    <div class="push"></div>
-
-    <footer>
-        <p>My socials:</p>
-        <div class="socials">
-            <button onclick="window.open('https://github.com/Icewav3', '_blank')">
-                <i class="fa-brands fa-github fa-lg"></i> GitHub
-            </button>
-            <button onclick="window.open('https://www.linkedin.com/in/cole-dorman-313b0a238/', '_blank')">
-                <i class="fa-brands fa-linkedin fa-lg"></i> LinkedIn
-            </button>
-        </div>
-    </footer>
-</div>
-</body>
-</html>
+<BaseLayout>
+    <section id="intro">
+        <h1>Hello!</h1>
+        <p>
+            My name is Cole Dorman, I am currently a
+            <a href="https://www.rrc.ca/">Red River College</a>
+            student studying
+            <a href="https://www.rrc.ca/explore/program/game-development-programming/">Game Development</a>
+            as well as leading projects in our class.
+        </p>
+        <p>
+            I am passionate about all facets of game development, from design to programming. I have experience
+            in both Unity and Unreal Engine, and I am currently learning C# and C++. I also enjoy aspects of
+            project management, as it's very rewarding to help everyone come together to create something great.
+        </p>
+        <p>
+            I believe balancing is an extremely core component of any game, and without it even games filled with
+            content can feel empty. I also believe it is the developer's job to account for human nature of
+            tending to "optimize the fun out of games", and I try to bring that into my projects.
+        </p>
+        <p>
+            Outside of work, I enjoy playing board games or video games, as well as mountain biking & trail riding.
+            Beyond those I also enjoy hiking and the scent of forest.
+        </p>
+    </section>
+</BaseLayout>

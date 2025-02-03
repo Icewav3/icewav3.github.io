@@ -1,50 +1,7 @@
 ---
-import '../assets/global.css';
-import '../assets/fontawesome/css/fontawesome.css';
-import '../assets/fontawesome/css/brands.css';
+import BaseLayout from '../components/BaseLayout.astro';
 ---
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta content="width=device-width, initial-scale=1.0" name="viewport">
-    <meta content="ie=edge" http-equiv="X-UA-Compatible">
-    <title>Cole Dorman's Portfolio</title>
-</head>
-<body>
-<!-- Background styling -->
-<div class="container">
-    <div class="background-light"></div>
-    <div class="background-light"></div>
-    <header>
-        <nav class="button-container">
-            <!-- Navigation links -->
-            <button onclick="window.location.href='/index'">Overview</button>
-            <button onclick="window.location.href='/projects'">Projects</button>
-            <button onclick="window.location.href='/experience'">Experience</button>
-            <button onclick="window.location.href='/aboutMe'">About me</button>
-        </nav>
-    </header>
-
-    <main>
-        <section id="intro">
-            <!-- Introduction text -->
-            <h1>Cole Dorman</h1>
-            <p>> Game developer & Project Manager</p>
-        </section>
-    </main>
-    <div class="push"></div>
-    <footer>
-        <p>My socials:</p>
-        <div class="socials">
-            <button onclick="window.open('https://github.com/Icewav3', '_blank')">
-                <i class="fa-brands fa-github fa-lg"></i> GitHub
-            </button>
-            <button onclick="window.open('https://www.linkedin.com/in/cole-dorman-313b0a238/', '_blank')">
-                <i class="fa-brands fa-linkedin fa-lg"></i> LinkedIn
-            </button>
-        </div>
-    </footer>
-</div>
-</body>
-</html>
+<BaseLayout>
+    <h1>Cole Dorman</h1>
+    <p>Game developer & Project Manager</p>
+</BaseLayout>

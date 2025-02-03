@@ -1,0 +1,39 @@
+﻿---
+import '../assets/global.css';
+import '../assets/fontawesome/css/fontawesome.css';
+import '../assets/fontawesome/css/brands.css';
+
+import Header from './Header.astro';
+import Footer from './Footer.astro';
+---
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="ie=edge" http-equiv="X-UA-Compatible">
+    <title>Cole Dorman's Portfolio</title>
+</head>
+<body>
+<div class="container">
+    <div class="background-light"></div>
+    <div class="background-light"></div>
+
+    <!-- Allows overriding the header via a slot -->
+    <slot name="header">
+        <Header/> <!-- Default Header if no slot is provided -->
+    </slot>
+
+    <main>
+        <slot/> <!-- Main page content -->
+    </main>
+
+    <!--sticky footer-->
+    <div class="push"></div>
+
+    <!-- Allows overriding the footer via a slot -->
+    <slot name="footer">
+        <Footer/> <!-- Default Footer if no slot is provided -->
+    </slot>
+</div>
+</body>
+</html>
