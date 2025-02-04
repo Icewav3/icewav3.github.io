@@ -1,0 +1,72 @@
+﻿---
+import BaseLayout from "../components/BaseLayout.astro";
+---
+<BaseLayout>
+    <main>
+        <h1>Miku's Mall Madness Demo</h1>
+        <h5>
+            <u>
+                <a href="#gameIframe">
+                    You can click me to skip to the bottom of the page for the demo.
+                </a>
+            </u>
+        </h5>
+        <p>This is a C# Unity game made in under 3 weeks with 11 students.</p>
+
+        <h2>My role in this project:</h2>
+        <p>
+            I was the project manager/coordinator and one of the programmers. During this project, I decided to focus
+            more on leading the team rather than being a lead programmer. I had assigned a lead programmer and lead
+            artist.
+        </p>
+        <h3>My responsibilities included:</h3>
+        <ul>
+            <li>Facilitating team discussions</li>
+            <li>Handling conflict between members</li>
+            <li>Ensuring everyone felt comfortable being part of the team environment</li>
+            <li>Keeping scope in check</li>
+            <li>Managing the project's timeline and deadlines</li>
+            <li>Ensuring the art team and programmer team communicated effectively</li>
+            <li>Facilitating key design decisions through team discussion</li>
+            <li>The success of the project</li>
+        </ul>
+
+        <h2>Controls:</h2>
+        <p>
+            Press in the direction you want to move, and tap on the buttons you want to interact with.
+            Attacks will only work when targeting an enemy (the opposing side of Miku on screen).
+            Miku's ultimate attack will only work when targeting herself as it is a healing ability.
+        </p>
+
+        <!-- Game iframe section -->
+        <div class="game-container">
+            <iframe
+                    id="gameIframe"
+                    src=""
+                    title="Miku's Mall Madness"
+                    loading="lazy"
+            ></iframe>
+        </div>
+
+        <!-- Dynamically determine mobile/desktop game in JavaScript -->
+        <script>            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
+        const iframe = document.getElementById("gameIframe");
+        if (iframe) {
+            iframe.src = isMobile ? "/MikusMallMadness/MikusMallMadnessGameMobile.html" : "/MikusMallMadness/MikusMallMadnessGameDesktop.html";
+        } else {
+            console.error("Error: Game iframe not found.");
+        }</script>
+
+        <!-- Fallback message (no JavaScript) -->
+        <noscript>
+            <p style="color: var(--primary-text-color); text-align: center;">
+                The game requires JavaScript to run. Please enable JavaScript in your browser to play the game.
+            </p>
+        </noscript>
+
+        <!-- Button to navigate back to projects -->
+        <div class="button-container">
+            <button onclick="window.location.href='/projects'">Back to Projects</button>
+        </div>
+    </main>
+</BaseLayout>
