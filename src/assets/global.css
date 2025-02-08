@@ -196,8 +196,29 @@ p, li {
 	display: block;
 }
 
+/* Global styling for bullet lists */
+ul {
+	list-style-type: disc; /* Default bullet style */
+	padding-left: 40px; /* Add indentation */
+	margin-bottom: 1rem; /* Add space between lists and other elements */
+}
+
+ul ul {
+	list-style-type: circle; /* Nested list bullet style */
+	padding-left: 40px; /* Further indentation for nested lists */
+}
+
+ul ul ul {
+	list-style-type: square; /* Style for third-level nested bullets */
+	padding-left: 40px;
+}
+
+li {
+	line-height: 1.6; /* Adjust line height for readability */
+	margin-bottom: 0.5rem; /* Add some space between list items */
+}
+
 /* fontawesome config */
 i {
 	padding: 0;
 }
-
