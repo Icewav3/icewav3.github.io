@@ -1,0 +1,29 @@
+﻿---
+import BaseLayout from "../components/BaseLayout.astro";
+---
+<BaseLayout>
+    <main>
+        <h1>Platformer Game</h1>
+        <p>Check out this simple platformer I made in JavaScript:</p>
+
+        <!-- Game iframe section -->
+        <div class="game-container">
+            <iframe
+                    src="/platformer/platformerGame.html"
+                    style="width: 640px; height: 440px; border: none;"
+                    title="Platformer Game"
+                    loading="lazy"
+            ></iframe>
+        </div>
+
+        <!-- Fallback message (no JavaScript) -->
+        <noscript>
+            <p style="color: var(--primary-text-color); text-align: center;">
+                The game requires JavaScript to run. Please enable JavaScript in your browser to play the game.
+            </p>
+        </noscript>
+
+        <!-- Controls -->
+        <p>Controls: Arrow keys to move and shift to dash while pressing a directional key (arrow key).</p>
+    </main>
+</BaseLayout>

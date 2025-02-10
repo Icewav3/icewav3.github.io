@@ -1,0 +1,47 @@
+﻿---
+import BaseLayout from "../components/BaseLayout.astro"
+import ProjectCard from "../components/ProjectCard.astro"
+---
+<BaseLayout>
+    <section id="projects">
+        <h1>Projects</h1>
+        <h3>Mobile friendly</h3>
+        <p>
+            Select one of the games below to try out demos and read about my role in the project.
+            This section contains mobile friendly demos.
+        </p>
+        <!-- Add .projects-grid to wrap the ProjectCards -->
+        <div class="projects-grid">
+            <ProjectCard
+                    title="Miku's Mall Madness"
+                    previewImage="/images/MikusMallMadness/MikusMallMadnessPreview.png"
+                    demoImage="/images/MikusMallMadness/MikusMallMadnessDemo.gif"
+                    link="/MikusMallMadnessContainer"
+            />
+        </div>
+
+        <h3>Desktop/Laptop only</h3>
+        <p>
+            These projects will only work with adequate screen resolutions and a keyboard.
+        </p>
+        <!-- Add .projects-grid to wrap ProjectCards -->
+        <div class="projects-grid">
+            <ProjectCard
+                    title="Math Platformer"
+                    previewImage="/images/MathPlatformer/platformerPreview.png"
+                    demoImage="/images/MathPlatformer/platformer.gif"
+                    link="/PlatformerGame"
+            />
+        </div>
+    </section>
+</BaseLayout>
+
+<style>
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+		gap: 20px;
+		margin-top: 20px;
+		justify-items: center;
+	}
+</style>

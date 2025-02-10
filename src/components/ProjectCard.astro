@@ -1,0 +1,15 @@
+﻿---
+import styles from './ProjectCard.module.css';
+export interface ProjectCardProps {
+    title: string;
+    previewImage: string;
+    demoImage: string;
+    link: string;
+}
+const {title, previewImage, demoImage, link} = Astro.props;
+---
+<div class={styles['project-card']} onclick={`window.location.href='${link}'`}>
+    <img alt={`${title} Preview`} class={styles['png-image']} src={previewImage}/>
+    <img alt={`${title} Demo`} class={styles['gif-image']} src={demoImage}/>
+    <span class={styles['project-title']}>{title}</span>
+</div>
