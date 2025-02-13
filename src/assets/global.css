@@ -20,7 +20,7 @@
 }
 
 body {
-	font-family: "Courier New", Courier, monospace;
+	font-family: "JetBrains Mono", monospace;
 	background-color: var(--main-bg-color);
 	min-height: calc(100vh - 2 * var(--padding-size));
 	display: flex;
@@ -32,7 +32,7 @@ body {
 	display: flex;
 	flex-direction: column;
 	flex-grow: 1;
-	max-width: 1600px;
+	max-width: 100vw;
 	width: calc(100vw - 4 * var(--padding-size));
 	height: auto;
 	align-items: center;
@@ -176,6 +176,7 @@ button:hover {
 
 h1, h2, h3, h4, h5, h6 {
 	color: var(--secondary-text-color);
+	text-align: center;
 }
 
 h1 {
