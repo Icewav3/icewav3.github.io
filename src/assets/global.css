@@ -95,28 +95,6 @@ header {
 }
 
 
-footer {
-	justify-content: center;
-	width: 100%;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	padding: var(--padding-size);
-	background-color: var(--container-bg-color);
-	color: var(--primary-text-color);
-}
-
-footer p {
-	font-weight: bold;
-	margin-bottom: calc(var(--padding-size) / 2);
-}
-
-footer .socials {
-	display: flex;
-	justify-content: center;
-	gap: 20px;
-}
-
 /* @media (max-width: 680px) { */
 /* 	footer .socials { */
 /* 		flex-direction: column; */
@@ -177,6 +155,7 @@ button:hover {
 h1, h2, h3, h4, h5, h6 {
 	color: var(--secondary-text-color);
 	text-align: center;
+	/*TODO check if this works properly */
 }
 
 h1 {
