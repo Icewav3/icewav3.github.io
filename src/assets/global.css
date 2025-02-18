@@ -1,4 +1,6 @@
-﻿/*Variables!!!!*/
+﻿@import "../assets/fonts.css";
+
+/*Variables!!!!*/
 :root {
 	--phone-display-width: 680px;
 	--main-bg-color: #0a192f;
@@ -14,6 +16,7 @@
 }
 
 * {
+
 	box-sizing: border-box;
 	margin: 0;
 	padding: var(--padding-size);
