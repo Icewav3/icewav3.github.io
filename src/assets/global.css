@@ -52,16 +52,6 @@ p, li {
 	color: var(--primary-text-color);
 }
 
-.game-container iframe {
-	width: 100%;
-	height: auto;
-	aspect-ratio: 16 / 9;
-	max-width: calc(100vw - 8 * var(--padding-size));
-	max-height: calc(100vh - 8 * var(--padding-size));
-	border: none; /* Remove border */
-	display: block;
-}
-
 /* Global styling for bullet lists */
 ul {
 	list-style-type: disc; /* Default bullet style */

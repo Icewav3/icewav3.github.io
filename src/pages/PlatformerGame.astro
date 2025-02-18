@@ -27,3 +27,21 @@ import BaseLayout from "../components/BaseLayout.astro";
         <p>Controls: Arrow keys to move and shift to dash while pressing a directional key (arrow key).</p>
     </main>
 </BaseLayout>
+<style>
+	.game-container iframe {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		max-width: calc(100vw - 8 * var(--padding-size));
+		max-height: calc(100vh - 8 * var(--padding-size));
+		border: none; /* Remove border */
+		display: block;
+	}
+
+	/* this prob needs to move */
+	.button-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
