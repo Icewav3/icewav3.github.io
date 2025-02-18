@@ -1,11 +1,11 @@
 ﻿---
-// src/components/Header.astro
+import Button from './Button.astro'; // Import the reusable Button component
 ---
 <header>
     <nav class="button-container">
-        <button onclick="window.location.href='/'">Overview</button>
-        <button onclick="window.location.href='/projects'">Projects</button>
-        <button onclick="window.location.href='/experience'">Experience</button>
-        <button onclick="window.location.href='/aboutMe'">About me</button>
+        <Button text="Overview" href="/"/>
+        <Button text="Projects" href="/projects"/>
+        <Button text="Experience" href="/experience"/>
+        <Button text="About me" href="/aboutMe"/>
     </nav>
 </header>

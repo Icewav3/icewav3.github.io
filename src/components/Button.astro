@@ -1,0 +1,54 @@
+﻿---
+/* src/components/Button.astro */
+/* Props for the button component */
+export interface ButtonProps {
+  text: string; // Button text
+  href?: string; // If provided, the button acts as a link
+  onclick?: string; // Optional inline JavaScript for button click
+  icon?: string; // FontAwesome icon class (e.g., "fa-brands fa-github")
+  target?: string; // Optional target for links (e.g., "_blank")
+}
+
+// Props destructuring
+const { text, href, onclick, icon, target = "_self" } = Astro.props;
+---
+
+{href ? (
+  // Render as a link if "href" is provided
+  <a href={href} class="button" target={target}>
+    {icon && <i class={icon}></i>} {text}
+  </a>
+) : (
+  // Otherwise, render as a button
+  <button class="button" onclick={onclick}>
+    {icon && <i class={icon}></i>} {text}
+  </button>
+)}
+
+<style>
+/* Base button styles */
+.button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem; /* Space between icon and text */
+  border: 2px solid var(--secondary-text-color);
+  border-radius: 10px;
+  background: var(--container-bg-color);
+  color: var(--primary-text-color);
+  text-decoration: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Hover */
+.button:hover {
+  background: var(--secondary-text-color);
+  color: var(--container-bg-color);
+}
+
+/* Optional: Adjust FontAwesome icon size */
+i {
+  font-size: 1.2rem;
+}
+</style>

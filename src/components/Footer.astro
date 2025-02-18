@@ -1,15 +1,21 @@
 ﻿---
-// src/components/Footer.astro
+import Button from './Button.astro'; // Import the reusable Button component
 ---
 <footer>
     <h2>My socials:</h2>
     <div class="socials">
-        <button onclick="window.open('https://github.com/Icewav3', '_blank')">
-            <i class="fa-brands fa-github fa-lg"></i> GitHub
-        </button>
-        <button onclick="window.open('https://www.linkedin.com/in/cole-dorman-313b0a238/', '_blank')">
-            <i class="fa-brands fa-linkedin fa-lg"></i> LinkedIn
-        </button>
+        <Button
+                text="GitHub"
+                href="https://github.com/Icewav3"
+                icon="fa-brands fa-github fa-lg"
+                target="_blank"
+        />
+        <Button
+                text="LinkedIn"
+                href="https://www.linkedin.com/in/cole-dorman-313b0a238/"
+                icon="fa-brands fa-linkedin fa-lg"
+                target="_blank"
+        />
     </div>
 </footer>
 <style>

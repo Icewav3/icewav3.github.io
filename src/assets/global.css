@@ -39,48 +39,9 @@ a:hover {
 	color: var(--link-hover-color);
 }
 
-
-.button-container {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	justify-content: center;
-	align-items: center;
-	gap: 10px;
-	margin-bottom: 20px;
-}
-
-/* Button styling */
-button {
-	border: 2px solid var(--secondary-text-color);
-	border-radius: 10px;
-	background: var(--container-bg-color);
-	color: var(--primary-text-color);
-	text-decoration: none; /* Needed to override default button styling */
-	padding: 10px 20px; /* Add padding to the button */
-	cursor: pointer; /* Add pointer cursor on hover */
-	transition: background 0.3s, color 0.3s;
-}
-
-
-button:hover {
-	background: var(--secondary-text-color);
-	color: var(--container-bg-color);
-}
-
-@media (max-width: 525px) {
-	.button-container {
-		flex-direction: column;
-		align-items: stretch;
-		width: 100%;
-	}
-}
-
-
 h1, h2, h3, h4, h5, h6 {
 	color: var(--secondary-text-color);
 	text-align: center;
-	/*TODO check if this works properly */
 }
 
 h1 {
