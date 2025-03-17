@@ -7,7 +7,8 @@ import ProjectCard from "../components/ProjectCard.astro"
         <h1>Projects</h1>
         <h3>Mobile friendly</h3>
         <p>
-            Select one of the games below to try out demos and read about my role in the project.
+            Select one of the games below to try out demos and read about my
+            role in the project.
             This section contains mobile friendly demos.
         </p>
         <!-- Add .projects-grid to wrap the ProjectCards -->
@@ -22,12 +23,19 @@ import ProjectCard from "../components/ProjectCard.astro"
 
         <h3>Desktop/Laptop only</h3>
         <p>
-            These projects will only work with adequate screen resolutions and a keyboard.
+            These projects will only work with adequate screen resolutions and a
+            keyboard.
         </p>
         <!-- Add .projects-grid to wrap ProjectCards -->
         <div class="projects-grid">
             <ProjectCard
-                    title="Math Platformer"
+                    title="Zlorp Life"
+                    previewImage="/images/ZlorpLife/ZlorpLifePreview.png"
+                    demoImage="/images/ZlorpLife/ZlorpLifeDemo.gif"
+                    link="/ZlorpLifeContainer"
+            />
+            <ProjectCard
+                    title="Simple Platformer"
                     previewImage="/images/MathPlatformer/platformerPreview.png"
                     demoImage="/images/MathPlatformer/platformer.gif"
                     link="/PlatformerGame"

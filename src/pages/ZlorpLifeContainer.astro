@@ -1,0 +1,94 @@
+﻿---
+import BaseLayout from "../components/BaseLayout.astro";
+import Button from "../components/Button.astro";
+---
+<BaseLayout>
+    <main>
+        <h1>Zlorp Life</h1>
+        <h5>
+            <u>
+                <a href="#gameIframe">
+                    You can click me to skip to the bottom of the page for the
+                    demo.
+                </a>
+            </u>
+        </h5>
+        <p>This is a C# Unity game made in under 3 days with 3 other
+            students as a part of PegJam2025</p>
+
+        <h2>My role in this project:</h2>
+        <p>
+            I took the role of a team lead and programmer.
+        </p>
+        <h3>My responsibilities included:</h3>
+        <ul>
+            <li>Scope management</li>
+            <li>Building the entire dialogue system from scratch</li>
+            <li>Teaching git and GitHub to new members
+            </li>
+            <li>Keeping scope in check</li>
+            <li>Managing the project's timeline and deadlines</li>
+            <li>Ensuring the art team and programmer team communicated
+                effectively
+            </li>
+            <li>Facilitating key design decisions through team discussion</li>
+            <li>The success of the project</li>
+        </ul>
+
+        <h2>Controls:</h2>
+        <p>
+            WASD to move, left click to attack.
+            Attacking decreases your health, the green pickups are health
+        </p>
+
+        <!-- Game iframe section -->
+        <div class="game-container">
+            <iframe
+                    id="gameIframe"
+                    src=""
+                    title="Zlorp Life"
+                    loading="lazy"
+            ></iframe>
+        </div>
+
+        <!-- Dynamically determine mobile/desktop game in JavaScript -->
+        <script>            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
+        const iframe = document.getElementById("gameIframe");
+        if (iframe) {
+            iframe.src = isMobile ? "/ZlorpLife/ZlorpLifeGameMobile.html" : "/ZlorpLife/ZlorpLifeGameDesktop.html";
+        } else {
+            console.error("Error: Game iframe not found.");
+        }</script>
+
+        <!-- Fallback message (no JavaScript) -->
+        <noscript>
+            <p style="color: var(--primary-text-color); text-align: center;">
+                The game requires JavaScript to run. Please enable JavaScript in
+                your browser to play the game.
+            </p>
+        </noscript>
+
+        <!-- Button to navigate back to projects -->
+        <div class="button-container">
+            <Button text="Back to Projects" href="/projects"/>
+        </div>
+    </main>
+</BaseLayout>
+<style>
+	.game-container iframe {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		max-width: calc(100vw - 8 * var(--padding-size));
+		max-height: calc(100vh - 8 * var(--padding-size));
+		border: none; /* Remove border */
+		display: block;
+	}
+
+	/* this prob needs to move */
+	.button-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
