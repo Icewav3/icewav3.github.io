@@ -1,0 +1,57 @@
+﻿---
+import BaseLayout from "../components/BaseLayout.astro";
+---
+<BaseLayout>
+    <main>
+        <h1>Asteroids Game</h1>
+        <p>Check out this Asteroids remake I made in JavaScript:</p>
+
+        <!-- Game iframe section -->
+        <div class="game-container">
+            <iframe
+                    src="/Asteroids/AsteroidsGame.html"
+                    style="width: 640px; height: 440px; border: none;"
+                    title="Asteroids Game"
+                    loading="lazy"
+            ></iframe>
+        </div>
+
+        <!-- Fallback message (no JavaScript) -->
+        <noscript>
+            <p style="color: var(--primary-text-color); text-align: center;">
+                The game requires JavaScript to run. Please enable JavaScript in
+                your browser to play the game.
+            </p>
+        </noscript>
+
+        <!-- Controls -->
+        <p>Controls: W is forward thrust, A/D to turn left and right, S to warp,
+            and Space to shoot.</p>
+    </main>
+</BaseLayout>
+<style>
+	.game-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		margin: 2rem auto;
+	}
+
+	.game-container iframe {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		max-width: calc(100vw - 8 * var(--padding-size));
+		max-height: calc(100vh - 8 * var(--padding-size));
+		border: none; /* Remove border */
+		display: block;
+	}
+
+	/* this prob needs to move */
+	.button-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	}
+</style>
