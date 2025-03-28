@@ -24,9 +24,32 @@ import BaseLayout from "../components/BaseLayout.astro";
             </p>
         </noscript>
 
-        <!-- Controls -->
-        <p>Controls: W is forward thrust, A/D to turn left and right, S to warp,
-            and Space to shoot.</p>
+        <p>
+            This project was eye-opening for me as we had created it entirely
+            from scratch and without a game engine. Which highlights the
+            amount of work game engines do for us.
+
+            One thing this project really made me realize how closely my code
+            standards are connected to the allotted scope and timeframe for a
+            project.
+
+            For example, things not included in the initial scope added much
+            more complexity as infrastructure was not designed to support them.
+            As those things are added they are also exponentially increase the
+            complexity as they are closer to being duct taped on rather than
+            built into the foundation. Which really highlights the importance of
+            not taking shortcuts in large scope and long term projects. If you
+            need to refactor a bunch of base classes to allow for a new feature,
+            you should base the decision on the project's scope and expected
+            lifetime.
+
+            It also made me realize how my standards change in different
+            settings, my documentation was great at first
+            but later I found myself allotting less and less time to
+            documenting. In contrast to when I know others will have to use and
+            understand my code, I make sure to meticulously document everything
+            and adhere to code standards.
+        </p>
     </main>
 </BaseLayout>
 <style>
