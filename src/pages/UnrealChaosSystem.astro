@@ -34,11 +34,101 @@ import Image from '../components/Image.astro'
             src="/images/UnrealChaosSystem/UnrealChaosDestructionSystem.webp"
             alt="A grenade exploding a pallete of bricks and a mysterious figure"
             description="Slowed for effect"
+            loading="eager"
     />
-
+    <p>
+        The use cases of this are pretty extensive given you have the
+        computational budget, as they can add a ton to explosions and also make
+        it look so much cooler.
+    </p>
     <Image
             src="/images/UnrealChaosSystem/UnrealChaosDestructionSystemBig.webp"
             alt="A grenade exploding beside a wall and fracturing it into pieces that are sent flying"
             description="Not bad... Not bad"
+            loading="eager"
     />
+    <h3>Creation</h3>
+    <p>
+        This is how I created my actor, and the components I attached.
+    </p>
+    <Image
+            src="/images/UnrealChaosSystem/ChaosFieldComponentTree.png"
+            alt="Component list for BP_ChaosExplosionField showing a FieldSystem with RadialVector, CullingField, and RadialFalloff."
+            description="This is the setup I chose for making my blueprint actor"
+    />
+    <p>
+        Here is the blueprint graph which I will explain:
+    </p>
+    <Image
+            src="/images/UnrealChaosSystem/BP_ChaosExplosionField.png"
+            alt="Blueprint graph in Unreal Engine showing a chaos explosion field setup with sections for constructor, debug, begin play, and falloff creation. Includes nodes for setting field properties, debug visualization, and applying radial forces."
+            description="This is the setup for the eventgraph of the blueprint "
+    />
+    <p>
+        Firstly we need to create a transient field, and create it using a "set
+        radial falloff" node, which I am using the grenade's explosion radius
+        and magnitude to pass into the ChaosExplosionField object. This initial
+        node handles the breaking force that's being applied. An important note
+        here is this has nothing to to do with impulse, only causes an object to
+        be able to break.
+    </p>
+    <p>
+        The second transient field we add is what adds linear velocity scaled by
+        the distance to the center of the explosion, however it's crucial to
+        note that if you do not use a culling field it will have infinite
+        radius.
+    </p>
+    <h3>Re-usability</h3>
+    <p>
+        Firstly to make our ChaosField have an effect on something we need to
+        define how it fractures.
+    </p>
+    <Image
+            alt="A pointer to the selection menu in unreal engine"
+            description="Once you selected the actor you want to fracture change to the fracture mode"
+            src="/images/UnrealChaosSystem/FractureMode.png"
+    />
+    <p>
+        Next step is to create a fracture asset:
+    </p>
+    <Image
+            alt="The new button on a generate tab of the fracture panel"
+            description="Once fracture mode is enabled a new side panel will show up with the new button."
+            src="/images/UnrealChaosSystem/CreateFracture.png"
+    />
+    <p>
+        You should see a pop-up, we can just leave all this default.
+    </p>
+    <Image
+            alt="Unreal engine pop up"
+            description="The pop-up in question:"
+            src="/images/UnrealChaosSystem/FractureAssetCreation.png"
+    />
+    <p>
+        Next we can go apply a type of fracture, for this I chose uniform.
+    </p>
+    <Image
+            alt="Menu with pointer to the Uniform fracture button"
+            description="You can find this under the fracture sub-category."
+            src="/images/UnrealChaosSystem/UniformFracture.png"
+    />
+    <p>
+        And we have our final result!
+    </p>
+    <Image
+            alt="A Cargo container that has been fractured uniformly"
+            description="All those lines you see are the subdivisons of each piece it will break into."
+            src="/images/UnrealChaosSystem/FinalFractureAsset.png"
+    />
+    <p>
+        Lastly we can uncheck "Show Bone Colors" and then go ahead and blow up
+        our new fractured object.
+    </p>
+    <Image
+            alt="A cargo container being shattered by an explosion"
+            description="Kaboom"
+            src="/images/UnrealChaosSystem/FragmentedContainerDestruction.webp"
+            loading="eager"
+    />
+
 </BaseLayout>
