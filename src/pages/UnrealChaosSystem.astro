@@ -1,0 +1,38 @@
+﻿---
+import BaseLayout from '../components/BaseLayout.astro';
+import Image from '../components/Image.astro'
+---
+<BaseLayout>
+    <h1>A deep dive into Unreal Engine 5's Chaos Destruction system</h1>
+    <p>
+        Unreal Engine is very unique, no other engines I have not tried are
+        quite like it. However it has a pretty cool set of features that come
+        pre-packaged with it, the one that interested me most; the chaos
+        destruction system.
+    </p>
+    <p>
+        During my time of experimentation I was working on a project
+        that involved the use of grenades and explosives. I had always loved
+        explosions and nothing is more satisfying than seeing a cool explosion
+        <strong>with</strong> environment destruction. However there was limited
+        information on how to go about creating what I envisioned, but this is
+        standard for UE and should not discourage you.
+    </p>
+    <Image
+            src="/images/UnrealChaosSystem/destruction-quickstart-shoot.gif"
+            alt="Unreal Engine's Chaos Destruction system tutorial"
+            description="A demonstartion of a projectile impact causing an box to fracture and break"
+            credit="Epic Games"
+    />
+    <p>
+        While there were extensive guides on how to make projectiles themselves
+        cause breakage, there was far less on creating a radial impulse that an
+        explosion would have. So I had to do some experimenting. But I won't
+        bore you with the details, instead this was my first (working!) attempt:
+    </p>
+    <Image
+            src="/images/UnrealChaosSystem/BigChaosDestruction.webp"
+            alt="A grenade exploding beside a wall and fracturing it into pieces that are sent flying"
+            description="Not bad... Not bad"
+    />
+</BaseLayout>
