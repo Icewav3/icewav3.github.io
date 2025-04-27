@@ -1,11 +1,13 @@
 ﻿---
+import {Image as AstroImage} from 'astro:assets';
+
 export interface Props {
-    src: string;
+    src: string | ImageMetadata;
     alt: string;
     description: string;
     credit?: string;
-    width?: string | number;
-    height?: string | number;
+    width?: number;
+    height?: number;
     class?: string;
     loading?: "eager" | "lazy";
 }
@@ -21,25 +23,35 @@ const {
     loading = "lazy"
 } = Astro.props;
 
-// Get the file extension to verify it's a supported format
-const fileExtension = src.split('.').pop()?.toLowerCase();
-const supportedFormats = ['jpg', 'jpeg', 'png', 'gif', 'webp', 'avif', 'svg'];
-const isSupported = supportedFormats.includes(fileExtension || '');
+// Type guard to check if src is a string or ImageMetadata
+const isRemoteImage = typeof src === 'string';
 
-if (!isSupported) {
-    console.warn(`Image format '${fileExtension}' may not be supported in all browsers.`);
-}
+// If src is a string (remote image), we need to handle it differently
+// as Astro's Image component requires width and height for remote images
+const imageProps = isRemoteImage
+    ? {src, width: width || 800, height: height || 600, alt}
+    : {src, alt, width, height};
 ---
 
 <div class="image-container">
     <figure class={`image-component ${className}`}>
-        <img
-                src={src}
-                alt={alt}
-                width={width}
-                height={height}
-                loading={loading}
-        />
+        {isRemoteImage ? (
+                <img
+                        src={src}
+                        alt={alt}
+                        width={width}
+                        height={height}
+                        loading={loading}
+                />
+        ) : (
+                <AstroImage
+                    {...imageProps}
+                    class="optimized-image"
+                    loading={loading}
+                    format="webp"
+                    quality={80}
+                />
+        )}
         <figcaption>
             <p class="description"><em>{description}</em></p>
             {credit && <p class="credit">Source: {credit}</p>}
@@ -64,7 +76,9 @@ if (!isSupported) {
 		transform: scale(1.02);
 	}
 
-	.image-component img {
+	/* Apply styles to both regular img and optimized-image */
+	.image-component img,
+	.image-component .optimized-image {
 		max-width: 100%;
 		height: auto;
 		border-radius: 10px;
@@ -73,7 +87,8 @@ if (!isSupported) {
 		transition: box-shadow 0.3s ease;
 	}
 
-	.image-component:hover img {
+	.image-component:hover img,
+	.image-component:hover .optimized-image {
 		box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
 	}
 
