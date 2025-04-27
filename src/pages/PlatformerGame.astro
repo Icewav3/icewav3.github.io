@@ -1,5 +1,5 @@
 ﻿---
-import BaseLayout from "../components/BaseLayout.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
 ---
 <BaseLayout>
     <main>
@@ -19,12 +19,14 @@ import BaseLayout from "../components/BaseLayout.astro";
         <!-- Fallback message (no JavaScript) -->
         <noscript>
             <p style="color: var(--primary-text-color); text-align: center;">
-                The game requires JavaScript to run. Please enable JavaScript in your browser to play the game.
+                The game requires JavaScript to run. Please enable JavaScript in
+                your browser to play the game.
             </p>
         </noscript>
 
         <!-- Controls -->
-        <p>Controls: Arrow keys to move and shift to dash while pressing a directional key (arrow key).</p>
+        <p>Controls: Arrow keys to move and shift to dash while pressing a
+            directional key (arrow key).</p>
     </main>
 </BaseLayout>
 <style>
