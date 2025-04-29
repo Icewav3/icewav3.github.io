@@ -1,59 +1,77 @@
 ﻿/* Container styling */
+/* todo finish backfixing this */
 .container {
-	display: flex;
-	flex-direction: column;
-	flex-grow: 1;
-	max-width: 100vw;
-	width: calc(100vw - 4 * var(--padding-size));
-	height: auto;
-	align-items: center;
-	position: relative;
-	border: 2px solid var(--container-border-color);
-	border-radius: 20px;
-	background: var(--container-bg-color);
-	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-	margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Set a maximum width for readability on large screens */
+  max-width: 1200px; /* Or your preferred max content width */
+  /* Make width flexible up to the max-width */
+  width: 100%;
+  /* Apply horizontal padding directly, use box-sizing to include it in the width */
+  padding: 0 var(--padding-size); /* Adjust as needed */
+  box-sizing: border-box;
+  min-height: 100vh; /* Ensure container takes at least full viewport height for sticky footer */
+  /* height: auto; is usually default, min-height is often more useful */
+
+  align-items: center;
+  position: relative;
+  border: 2px solid var(--container-border-color);
+  border-radius: 20px;
+  background: var(--container-bg-color);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+  margin: 0 auto;
 }
 
 /* Push for sticky footer */
 .push {
-	flex-grow: 1;
+  flex-grow: 1;
 }
 
 /* Background Light Effects */
 .background-light {
-	position: relative;
-	left: 50%;
-	top: 50%;
-	width: 30vw;
-	height: 30vh;
-	filter: blur(var(--blur-radius));
-	opacity: 0.7;
-	pointer-events: none;
-	z-index: 0;
+  position: relative;
+  left: 50%;
+  top: 50%;
+  width: 30vw;
+  height: 30vh;
+  filter: blur(var(--blur-radius));
+  opacity: 0.7;
+  pointer-events: none;
+  z-index: 0;
 }
 
 .background-light:nth-child(1) {
-	position: absolute;
-	transform: translate(-100%, -100%);
-	background: radial-gradient(circle, rgba(0, 255, 255, 0.7), rgba(0, 0, 255, 0) var(--gradient-strength));
+  position: absolute;
+  transform: translate(-100%, -100%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 255, 0.7),
+    rgba(0, 0, 255, 0) var(--gradient-strength)
+  );
 }
 
 .background-light:nth-child(2) {
-	position: absolute;
-	transform: translate(0%, 0%);
-	background: radial-gradient(circle, rgba(0, 255, 0, 0.7), rgba(0, 255, 255, 0) var(--gradient-strength));
+  position: absolute;
+  transform: translate(0%, 0%);
+  background: radial-gradient(
+    circle,
+    rgba(0, 255, 0, 0.7),
+    rgba(0, 255, 255, 0) var(--gradient-strength)
+  );
 }
 
 /* Header, Main, and Footer Layout */
-header, main, footer {
-	position: relative;
-	border-radius: 20px;
-	z-index: 1;
+header,
+main,
+footer {
+  position: relative;
+  border-radius: 20px;
+  z-index: 1;
 }
 
 header {
-	display: flex;
-	justify-content: center;
-	width: 100%;
+  display: flex;
+  justify-content: center;
+  width: 100%;
 }
