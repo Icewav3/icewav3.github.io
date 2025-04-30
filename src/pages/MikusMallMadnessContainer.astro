@@ -1,10 +1,10 @@
 ﻿---
-import BaseLayout from "../../layouts/BaseLayout.astro";
-import Button from "../../components/Button.astro";
+import BaseLayout from "../layouts/BaseLayout.astro";
+import Button from "../components/Button.astro";
 ---
 <BaseLayout>
     <main>
-        <h1>Zlorp Life</h1>
+        <h1>Miku's Mall Madness Demo</h1>
         <h5>
             <u>
                 <a href="#gameIframe">
@@ -13,18 +13,22 @@ import Button from "../../components/Button.astro";
                 </a>
             </u>
         </h5>
-        <p>This is a C# Unity game made in under 3 days with 3 other
-            students as a part of PegJam2025</p>
+        <p>This is a C# Unity game made in under 3 weeks with 11 students.</p>
 
         <h2>My role in this project:</h2>
         <p>
-            I took the role of a team lead and programmer.
+            I was the project manager/coordinator and one of the programmers.
+            During this project, I decided to focus
+            more on leading the team rather than being a lead programmer. I had
+            assigned a lead programmer and lead
+            artist.
         </p>
         <h3>My responsibilities included:</h3>
         <ul>
-            <li>Scope management</li>
-            <li>Building the entire dialogue system from scratch</li>
-            <li>Teaching git and GitHub to new members
+            <li>Facilitating team discussions</li>
+            <li>Handling conflict between members</li>
+            <li>Ensuring everyone felt comfortable being part of the team
+                environment
             </li>
             <li>Keeping scope in check</li>
             <li>Managing the project's timeline and deadlines</li>
@@ -37,8 +41,12 @@ import Button from "../../components/Button.astro";
 
         <h2>Controls:</h2>
         <p>
-            WASD to move, left click to attack.
-            Attacking decreases your health, the green pickups are health
+            Press in the direction you want to move, and tap on the buttons you
+            want to interact with.
+            Attacks will only work when targeting an enemy (the opposing side of
+            Miku on screen).
+            Miku's ultimate attack will only work when targeting herself as it
+            is a healing ability.
         </p>
 
         <!-- Game iframe section -->
@@ -46,7 +54,7 @@ import Button from "../../components/Button.astro";
             <iframe
                     id="gameIframe"
                     src=""
-                    title="Zlorp Life"
+                    title="Miku's Mall Madness"
                     loading="lazy"
             ></iframe>
         </div>
@@ -55,7 +63,7 @@ import Button from "../../components/Button.astro";
         <script>            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
         const iframe = document.getElementById("gameIframe");
         if (iframe) {
-            iframe.src = isMobile ? "/ZlorpLife/ZlorpLifeGameMobile.html" : "/ZlorpLife/ZlorpLifeGameDesktop.html";
+            iframe.src = isMobile ? "/MikusMallMadness/MikusMallMadnessGameMobile.html" : "/MikusMallMadness/MikusMallMadnessGameDesktop.html";
         } else {
             console.error("Error: Game iframe not found.");
         }</script>
