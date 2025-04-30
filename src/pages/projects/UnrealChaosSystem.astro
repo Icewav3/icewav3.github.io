@@ -1,9 +1,8 @@
 ﻿---
-import BaseLayout from '../layouts/BaseLayout.astro';
-import Image from '../components/Image.astro'
-import Button from "../components/Button.astro";
+import ProjectPageLayout from '../../layouts/ProjectPageLayout.astro';
+import Image from '../../components/Image.astro'
 ---
-<BaseLayout>
+<ProjectPageLayout title="Unreal Chaos Destruction System">
     <h1>A deep dive into Unreal Engine 5's Chaos Destruction system</h1>
     <p>
         Unreal Engine is very unique, no other engines I have not tried are
@@ -133,16 +132,13 @@ import Button from "../components/Button.astro";
     />
     <!-- frameborder needs to be here -->
     <!--suppress HtmlDeprecatedAttribute -->
-    <iframe
-            frameborder="0"
-            src="https://itch.io/embed/3469175?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
-            width="522"
-            height="165"
-    ></iframe>
-
-
-    <!-- Button to navigate back to projects -->
-    <div class="button-container">
-        <Button text="Back to Projects" href="/projects"/>
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <iframe
+                frameborder="0"
+                src="https://itch.io/embed/3469175?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
+                width="522"
+                height="165"
+        ></iframe>
     </div>
-</BaseLayout>
+
+</ProjectPageLayout>

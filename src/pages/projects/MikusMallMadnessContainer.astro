@@ -1,8 +1,7 @@
 ﻿---
-import BaseLayout from "../layouts/BaseLayout.astro";
-import Button from "../components/Button.astro";
+import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 ---
-<BaseLayout>
+<ProjectPageLayout title="Miku's Mall Madness">
     <main>
         <h1>Miku's Mall Madness Demo</h1>
         <h5>
@@ -75,13 +74,8 @@ import Button from "../components/Button.astro";
                 your browser to play the game.
             </p>
         </noscript>
-
-        <!-- Button to navigate back to projects -->
-        <div class="button-container">
-            <Button text="Back to Projects" href="/projects"/>
-        </div>
     </main>
-</BaseLayout>
+</ProjectPageLayout>
 <style>
 	.game-container iframe {
 		width: 100%;
@@ -91,12 +85,5 @@ import Button from "../components/Button.astro";
 		max-height: calc(100vh - 8 * var(--padding-size));
 		border: none; /* Remove border */
 		display: block;
-	}
-
-	/* this prob needs to move */
-	.button-container {
-		display: flex;
-		justify-content: center;
-		align-items: center;
 	}
 </style>

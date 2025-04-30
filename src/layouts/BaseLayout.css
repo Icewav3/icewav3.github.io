@@ -1,19 +1,52 @@
 ﻿/* Container styling */
-/* todo finish backfixing this */
+/* Header, Main, and Footer Layout */
+header,
+main,
+footer {
+  position: relative;
+  /* Removed border-radius: 20px; as container already has it */
+  z-index: 1;
+  width: 100%; /* Ensure they take full width of the container */
+  /* Add horizontal padding to main and footer as well for consistency */
+  padding-left: var(--padding-size);
+  padding-right: var(--padding-size);
+}
+
+header {
+  display: flex; /* Keep flex if needed for internal alignment */
+  justify-content: center; /* Keep if needed */
+  /* width: 100%; is inherited from the rule above */
+  /* Ensure header also has vertical padding if desired, e.g.: */
+  padding-top: var(--padding-size);
+  padding-bottom: var(--padding-size);
+}
+
+main {
+  /* Add vertical padding to main content area */
+  padding-top: var(--padding-size);
+  padding-bottom: var(--padding-size);
+}
+
+/* Footer might also need vertical padding if it has content */
+footer {
+  padding-top: var(--padding-size);
+  padding-bottom: var(--padding-size);
+  /* Example: If footer content should be centered */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Container styling - Removed padding from here as it's now on header/main/footer */
 .container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
-  /* Set a maximum width for readability on large screens */
-  max-width: 1200px; /* Or your preferred max content width */
-  /* Make width flexible up to the max-width */
+  max-width: 1200px;
   width: 100%;
-  /* Apply horizontal padding directly, use box-sizing to include it in the width */
-  padding: 0 var(--padding-size); /* Adjust as needed */
+  /* padding: 0 var(--padding-size); Removed */
   box-sizing: border-box;
-  min-height: 100vh; /* Ensure container takes at least full viewport height for sticky footer */
-  /* height: auto; is usually default, min-height is often more useful */
-
+  min-height: 100vh;
   align-items: center;
   position: relative;
   border: 2px solid var(--container-border-color);
@@ -59,19 +92,4 @@
     rgba(0, 255, 0, 0.7),
     rgba(0, 255, 255, 0) var(--gradient-strength)
   );
-}
-
-/* Header, Main, and Footer Layout */
-header,
-main,
-footer {
-  position: relative;
-  border-radius: 20px;
-  z-index: 1;
-}
-
-header {
-  display: flex;
-  justify-content: center;
-  width: 100%;
 }

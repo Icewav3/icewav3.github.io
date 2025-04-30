@@ -32,21 +32,26 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <style>
 	.icon-bar {
 		display: flex;
+		flex-wrap: wrap;
 		justify-content: center;
 		align-items: center;
 		gap: 20px;
 		padding: 20px 0;
 		margin-bottom: 20px;
+		max-width: 100%;
 	}
 
 	.icon-bar img {
-		height: 100px;
+		height: 80px; /* Slightly reduced height for better mobile fit */
 		width: auto;
 		object-fit: contain;
 		transition: transform 0.2s ease;
+		/* Ensure images don't grow too large even if container is wide */
+		max-height: 100px;
 	}
 
 	.icon-bar img:hover {
 		transform: scale(1.1);
 	}
 </style>
+
