@@ -2,72 +2,95 @@
 
 /* Project card styling */
 .project-card {
-	position: relative;
-	width: 300px;
-	height: 200px;
-	cursor: pointer;
-	border-radius: 10px;
-	overflow: hidden;
-	border: 2px solid var(--secondary-text-color);
-	transition: transform 0.3s ease, box-shadow 0.3s ease;
-	box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  position: relative;
+  width: 100%; /* Keep this */
+  max-width: 300px;
+  aspect-ratio: 3 / 2; /* Ensures scalability on mobile devices */
+  cursor: pointer;
+  border-radius: 10px;
+  overflow: hidden;
+  border: 2px solid var(--secondary-text-color);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  /* Add this property to ensure the card's box-sizing includes border and padding */
+  box-sizing: border-box;
 }
 
 /* Scale card slightly on hover */
 .project-card:hover {
-	transform: scale(1.1);
-	box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
+  transform: scale(
+    1.05
+  ); /* Reduced from 1.1 to prevent overflow on small screens */
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.4);
 }
 
 /* Placeholder image (default state) */
 .project-card .placeholder-image {
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	transition: opacity 0.3s ease;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: opacity 0.3s ease;
 }
 
 /* GIF image (hidden by default) */
 .project-card .gif-image {
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 100%;
-	object-fit: cover;
-	opacity: 0; /* Hidden */
-	transition: opacity 0.3s ease;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0; /* Hidden */
+  transition: opacity 0.3s ease;
 }
 
 /* Show the GIF image on hover */
 .project-card:hover .placeholder-image {
-	opacity: 0;
+  opacity: 0;
 }
 
 .project-card:hover .gif-image {
-	opacity: 1;
+  opacity: 1;
 }
 
 /* Project title styling */
 .project-card .project-title {
-	position: absolute;
-	top: 10px;
-	left: 50%;
-	transform: translateX(-50%);
-	color: var(--primary-text-color);
-	font-size: 1.2rem;
-	font-weight: bold;
-	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
-	pointer-events: none;
-	z-index: 1;
-	background-color: rgba(0, 0, 0, 0.5);
-	padding: 5px 10px;
-	border-radius: 5px;
+  position: absolute;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--primary-text-color);
+  font-size: 1.2rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+  pointer-events: none;
+  z-index: 1;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
+  /* Add max-width to ensure text doesn't overflow on small screens */
+  max-width: 90%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .project-card .png-image,
 .project-card .gif-image {
-	width: 100%; /* Make the image fill the width of the container */
-	height: 100%; /* Make the image fill the height of the container */
-	object-fit: contain; /* Resize the image while maintaining its aspect ratio */
+  width: 100%; /* Make the image fill the width of the container */
+  height: 100%; /* Make the image fill the height of the container */
+  object-fit: contain; /* Resize the image while maintaining its aspect ratio */
+}
+
+/* Add responsive behavior for very small screens */
+@media (max-width: 330px) {
+  .project-card {
+    max-width: 100%;
+  }
+
+  .project-card:hover {
+    transform: scale(1.03); /* Even smaller scale on very small screens */
+  }
 }
