@@ -27,7 +27,7 @@
  *   Show arrows until    *
  *   player interacts.    *
  *                        *
-\**************************/
+ \**************************/
 
 class Player {
   constructor(x, y) {
@@ -57,7 +57,7 @@ class Player {
     this.hasInteracted = false; // Track initial user interaction
     this.jumpTutorial = false;
     this.dashTutorial = false;
-    
+
     this.dashParticles = []; // Store active dash particles
   }
 
@@ -66,22 +66,27 @@ class Player {
   processInput() {
     // Basic horizontal movement:
     // (Note the ternary operators.)
-    if (keyIsDown(LEFT_ARROW)) {
+    if (keyIsDown(65)) {
+      // A key
       this.acceleration.x = this.onGround
         ? -this.horizontalMovementForce
         : -this.horizontalAirControlForce;
       if (keyIsDown(16)) {
+        // Shift key
         this.tryDash(-1);
       }
-    } else if (keyIsDown(RIGHT_ARROW)) {
+    } else if (keyIsDown(68)) {
+      // D key
       this.acceleration.x = this.onGround
         ? this.horizontalMovementForce
         : this.horizontalAirControlForce;
       if (keyIsDown(16)) {
+        // Shift key
         this.tryDash(1);
       }
     }
-    if (keyIsDown(UP_ARROW)) {
+    if (keyIsDown(87)) {
+      // W key
       this.jump();
     }
   }
@@ -96,12 +101,12 @@ class Player {
     this.velocity.x = constrain(
       this.velocity.x,
       -this.speedLimit,
-      this.speedLimit
+      this.speedLimit,
     );
     this.velocity.y = constrain(
       this.velocity.y,
       -this.speedLimit,
-      this.speedLimit
+      this.speedLimit,
     );
     this.position.add(this.velocity);
 
@@ -130,7 +135,7 @@ class Player {
   platformCollisions(platforms) {
     // Find colliding platform, if any.
     const collidingPlatform = platforms.find((platform) =>
-      this.isCollidingWith(platform)
+      this.isCollidingWith(platform),
     );
 
     if (collidingPlatform) {
@@ -184,39 +189,39 @@ class Player {
       particle.display();
     }
   }
-tutorial(x, y, size) {
-  push();
-  textSize(20);
-  textAlign(CENTER, CENTER);
-  fill(0);
 
-  if (!this.hasInteracted) {
-    // Initial movement tutorial
-    text("←", x - size, y + size / 2);
-    text("→", x + size * 2, y + size / 2);
-    text("Move", x + size / 2, y - size);
-    if (keyIsDown(LEFT_ARROW) || keyIsDown(RIGHT_ARROW)) {
-      this.hasInteracted = true;
+  tutorial(x, y, size) {
+    push();
+    textSize(20);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    if (!this.hasInteracted) {
+      // Initial movement tutorial
+      text("A", x - size, y + size / 2);
+      text("D", x + size * 2, y + size / 2);
+      text("Move", x + size / 2, y - size);
+      if (keyIsDown(65) || keyIsDown(68)) {
+        // A or D keys
+        this.hasInteracted = true;
+      }
+    } else if (!this.jumpTutorial) {
+      // Jump tutorial
+      text("W", x + size / 2, y - size * 1.5);
+      text("Jump", x + size / 2, y - size * 2.5);
+      if (keyIsDown(87) && this.jumping) {
+        // W key
+        this.jumpTutorial = true;
+      }
+    } else if (!this.dashTutorial) {
+      // Dash tutorial
+      text("Shift + A or D", x + size / 2, y - size * 4);
+      text("Dash", x + size / 2, y - size * 5);
+      if (!this.canDash && this.dashTimer > 0) {
+        this.dashTutorial = true;
+      }
     }
-  } else if (!this.jumpTutorial) {
-    // Jump tutorial
-    text("↑", x + size / 2, y - size * 1.5);
-    text("Jump", x + size / 2, y - size * 2.5);
-    if (keyIsDown(UP_ARROW) && this.jumping) {
-      this.jumpTutorial = true;
-    }
-  } else if (!this.dashTutorial) {
-    // Dash tutorial
-    text("Shift + ← or →", x + size / 2, y - size * 4);
-    text("Dash", x + size / 2, y - size * 5);
-    if (!this.canDash && this.dashTimer > 0) {
-      this.dashTutorial = true;
-    }
+    pop();
   }
-
-  pop();
-}
-
 
   checkJump() {
     if (this.velocity.y === 0) {
@@ -233,11 +238,13 @@ tutorial(x, y, size) {
       this.velocity.y -= this.jumpForce;
     }
   }
+
   checkDash() {
     if (frameCount > this.dashTimer) {
       this.canDash = true;
     }
   }
+
   tryDash(direction) {
     if (this.canDash === true) {
       // Dash particle creation
@@ -248,17 +255,18 @@ tutorial(x, y, size) {
         direction,
         this.dashDistance,
         80,
-        [0, 250, 0] // Particle color (orange)
+        [0, 250, 0], // Particle color (orange)
       );
       this.dashParticles.push(dashParticle);
-      
+
       // Dash movement
-        this.position = createVector(
+      this.position = createVector(
         this.position.x + direction * this.dashDistance,
-        this.position.y, 0
+        this.position.y,
+        0,
       );
       this.velocity.x = 0;
-      
+
       this.canDash = false;
       this.dashTimer = frameCount + 3 * frameRate();
     }

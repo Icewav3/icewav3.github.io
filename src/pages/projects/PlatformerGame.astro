@@ -27,16 +27,23 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
         <!-- Controls -->
         <p>Controls: Arrow keys to move and shift to dash while pressing a
             directional key (arrow key).</p>
+        <p>The colours of your sprite mean the following:</p>
+        <ul>
+            <li>Green means you are able to dash.</li>
+            <li>Pink means you have a double jump left while you are in the
+                air.
+            </li>
+            <li>Blue means you have no double jump.</li>
+            <li>Orange means you are still charging the dash ability.</li>
+        </ul>
     </main>
 </ProjectPageLayout>
 <style>
-	.game-container iframe {
+	.game-container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 100%;
-		height: auto;
-		aspect-ratio: 16 / 9;
-		max-width: calc(100vw - 8 * var(--padding-size));
-		max-height: calc(100vh - 8 * var(--padding-size));
-		border: none; /* Remove border */
-		display: block;
+		margin: 2rem auto;
 	}
 </style>

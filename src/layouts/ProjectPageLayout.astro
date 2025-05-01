@@ -29,4 +29,15 @@ const {title = "Project"} = Astro.props;
 		/* padding: var(--padding-size) 0; */
 		margin-top: 2rem;
 	}
+
+	/* Iframe setup (cascading) */
+	:global(.game-container iframe) {
+		width: 100%;
+		height: auto;
+		aspect-ratio: 16 / 9;
+		max-width: calc(100vw - 8 * var(--padding-size));
+		max-height: calc(100vh - 8 * var(--padding-size));
+		border: none; /* Remove border */
+		display: block;
+	}
 </style>
