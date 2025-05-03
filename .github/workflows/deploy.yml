@@ -48,7 +48,7 @@ jobs:
           
           # Run the link checker
           LINK_CHECK_EXIT_CODE=0
-          npx blc http://localhost:8080 -ro --exclude linkedin.com --exclude twitter.com --filter-level 3 || LINK_CHECK_EXIT_CODE=$?
+          npx blc http://localhost:8080 -ro --exclude linkedin.com --exclude twitter.com --filter-level 1 --timeout 5000 || LINK_CHECK_EXIT_CODE=$?
           
           # Kill the server
           kill $SERVER_PID

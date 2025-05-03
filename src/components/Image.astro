@@ -4,7 +4,7 @@ import {Image as AstroImage} from 'astro:assets';
 export interface Props {
     src: string | ImageMetadata;
     alt: string;
-    description: string;
+    description?: string;
     credit?: string;
     width?: number;
     height?: number;

@@ -1,0 +1,108 @@
+﻿---
+import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
+import Image from "../../components/Image.astro";
+---
+<ProjectPageLayout title="Robomb">
+    <h1>Robomb</h1>
+
+    <p>
+        <i><b>Robomb</b></i> is a game where the player is put into a cyberpunk
+        world and plays as the main character "Pipe Bomb John" or PBJ for short.
+        PBJ has the ability to throw (yep you guessed it!) pipe bombs, to propel
+        himself around the levels.
+    </p>
+
+    <p>
+        We worked collaboratively in a group of 4 on this project. This game was
+        created with unreal engine, and was all of our first experience's with
+        it.
+    </p>
+
+    <Image
+            src="/images/Robomb/RobombTitleCard.png"
+            alt="The Robomb game's titlescreen"
+            loading="eager"
+    />
+
+    <h2>My Role</h2>
+    <p>
+        My primary role in this project was to create a fun, yet simple to
+        understand game mechanic to base our entire game around. My goal was to
+        create something that got players wanting to play again and again.
+        Essentially a low skill floor but high skill ceiling.
+    </p>
+
+    <h3>Responsibilities:</h3>
+    <ul>
+        <li>Gameplay mechanics</li>
+        <li>Implementing and interpreting playtester feedback</li>
+        <li>Project & Scope management</li>
+    </ul>
+
+    <h2>Technical Details</h2>
+    <p>
+        Working on the mechanics for the grenade was a constant and evolving
+        feature unlike anything I had worked on before. It was vital to keep
+        refining and improving on the mechanic as playtester feedback came in.
+        But I also had to keep a careful balance as if I changed how the
+        mechanics worked too much all the levels would need to be re-designed.
+    </p>
+
+    <!-- YouTube Video Embed -->
+    <div class="video-container">
+        <iframe
+                width="560"
+                height="315"
+                src="https://www.youtube.com/embed/QYMpeduzU6A"
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen>
+        </iframe>
+    </div>
+
+    <h3>
+        Credits:
+    </h3>
+    <p>
+        Marlena - UI and UX design
+    </p>
+    <p>
+        Caithlyne - Character design
+    </p>
+    <p>
+        Mariola - Level Design
+    </p>
+    <p>
+        Myself (Cole) - Gameplay programming & Project lead
+    </p>
+    <!-- Itch.io Embed -->
+    <!-- frameborder needs to be here -->
+    <!--suppress HtmlDeprecatedAttribute -->
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <iframe
+                frameborder="0"
+                src="https://itch.io/embed/3469175?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
+                width="522"
+                height="165"
+        ></iframe>
+    </div>
+</ProjectPageLayout>
+
+<style>
+	.video-container {
+		position: relative;
+		width: 100%;
+		padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+		margin: 2rem 0;
+	}
+
+	.video-container iframe {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		border: none;
+	}
+</style>
