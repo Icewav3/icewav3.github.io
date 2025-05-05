@@ -44,9 +44,7 @@ footer {
   flex-grow: 1;
   max-width: 1200px;
   width: 100%;
-  /* padding: 0 var(--padding-size); Removed */
   box-sizing: border-box;
-  min-height: 100vh;
   align-items: center;
   position: relative;
   border: 2px solid var(--container-border-color);
