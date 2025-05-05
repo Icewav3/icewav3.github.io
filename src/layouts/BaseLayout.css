@@ -37,16 +37,15 @@ footer {
   align-items: center;
 }
 
-/* Container styling - Removed padding from here as it's now on header/main/footer */
+/* Container styling */
 .container {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
   max-width: 1200px;
   width: 100%;
-  /* padding: 0 var(--padding-size); Removed */
   box-sizing: border-box;
-  min-height: 100vh;
+  height: 100%;
   align-items: center;
   position: relative;
   border: 2px solid var(--container-border-color);
