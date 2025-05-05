@@ -1,54 +1,97 @@
-﻿@import "../assets/fonts.css";
+﻿/**
+ * GLOBAL STYLES
+ * -------------
+ * This file contains the core styling for the website, including:
+ * - CSS variables (colors, spacing, effects)
+ * - Basic element resets
+ * - Common element styling 
+ */
+
+/* Import typography and font definitions */
+@import "../assets/fonts.css";
 @import "../assets/typography.css";
 
-/*Variables!!!!*/
+/* 
+ * CSS VARIABLES
+ * All major design tokens are defined here to ensure consistency
+ */
 :root {
-  --phone-display-width: 680px; /* This isn't used yet, but keep for potential media queries */
-  --main-bg-color: #0a192f;
-  --container-bg-color: #021a33;
-  --container-border-color: #4db8ff;
-  --primary-text-color: #ffffff;
-  --secondary-text-color: #4db8ff;
-  --tertiary-text-color: #ffd700;
-  --link-hover-color: #ffec99;
-  /* Changed padding unit from vh to rem for stability */
-  --padding-size: 1.5rem; /* Adjust value as needed, 1.5rem = 24px typically */
+  /* Breakpoints - for reference in media queries */
+  --phone-display-width: 680px;
+
+  /* Color scheme */
+  --main-bg-color: #0a192f; /* Dark blue background */
+  --container-bg-color: #021a33; /* Slightly darker blue for containers */
+  --container-border-color: #4db8ff; /* Light blue borders */
+
+  /* Text colors */
+  --primary-text-color: #ffffff; /* White text */
+  --secondary-text-color: #4db8ff; /* Light blue text (headers) */
+  --tertiary-text-color: #ffd700; /* Gold text (links) */
+  --link-hover-color: #ffec99; /* Light gold (link hover) */
+
+  /* Spacing - using rem for better scaling */
+  --padding-size: 1.5rem; /* ~24px at default font size */
+
+  /* Visual effects */
   --blur-radius: 100px;
   --gradient-strength: 150%;
 }
 
-/* Apply box-sizing globally, reset margin */
+/* 
+ * RESET & BASE STYLES
+ * ------------------
+ * Normalize behavior across browsers
+ */
+
+/* Apply consistent box model and reset margins */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
   margin: 0;
-  /* Removed padding and text-align from here */
 }
 
+/* 
+ * BODY STYLING
+ * -----------
+ * Sets the foundation for the entire site
+ */
 body {
   font-family: "JetBrains Mono", monospace;
   background-color: var(--main-bg-color);
-  /* Add body padding using the variable */
   padding: var(--padding-size);
-  min-height: 100vh; /* Ensure body takes full viewport height */
-  display: flex; /* Keep flex for BaseLayout.astro's container centering */
-  flex-direction: column; /* Keep flex for BaseLayout.astro's container centering */
-  color: var(--primary-text-color); /* Default text color */
-  line-height: 1.6; /* Set a base line-height for readability */
+  min-height: 100vh;
+
+  /* Flex layout to help with footer positioning */
+  display: flex;
+  flex-direction: column;
+
+  /* Base text styling */
+  color: var(--primary-text-color);
+  line-height: 1.6;
 }
 
-/* Generic link styling */
+/* 
+ * LINK STYLING
+ * -----------
+ * Consistent styling for all links
+ */
 a {
   color: var(--tertiary-text-color);
   text-decoration: underline;
-  transition: color 0.3s;
+  transition: color 0.3s; /* Smooth hover effect */
 }
 
 a:hover {
   color: var(--link-hover-color);
 }
 
+/* 
+ * HEADINGS
+ * -------
+ * Common styling for all heading levels
+ */
 h1,
 h2,
 h3,
@@ -56,14 +99,15 @@ h4,
 h5,
 h6 {
   color: var(--secondary-text-color);
-  text-align: center; /* Center headings is common */
-  margin-bottom: 1rem; /* Add some space below headings */
-  line-height: 1.2; /* Adjust heading line-height */
+  text-align: center;
+  margin-bottom: 1rem;
+  line-height: 1.2;
 }
 
+/* Specific heading styles */
 h1 {
   text-decoration: underline;
-  font-size: 2.5rem; /* Example responsive font size */
+  font-size: 2.5rem;
 }
 
 h2 {
@@ -74,50 +118,71 @@ h3 {
   font-size: 1.75rem;
 }
 
-/* Ensure paragraphs and lists align left/start for readability */
+/* 
+ * TEXT CONTENT
+ * -----------
+ * Styling for paragraphs and list items
+ */
 p,
 li {
-  /* color is inherited from body now */
-  text-align: start; /* Or 'left' if you prefer */
-  max-width: 75ch; /* Limit line length for readability */
-  margin-left: auto; /* Center the text block if its container is wider */
-  margin-right: auto; /* Center the text block if its container is wider */
-  margin-bottom: 1rem; /* Space below paragraphs */
+  /* Text aligned to start (left in LTR languages) for readability */
+  text-align: start;
+
+  /* Optimal reading width - improves readability for longer text */
+  max-width: 75ch;
+
+  /* Center the block within its container if wider */
+  margin-left: auto;
+  margin-right: auto;
+
+  /* Space between paragraphs */
+  margin-bottom: 1rem;
 }
 
-/* Global styling for bullet lists */
+/* 
+ * LISTS
+ * -----
+ * Styling for unordered lists 
+ */
 ul {
   list-style-type: disc;
-  /* Removed padding-left, let the browser/user agent handle default indentation or control within components */
   margin-bottom: 1rem;
-  /* Ensure lists align start within their container */
-  padding-left: 2em; /* Add indentation relative to font size */
-  text-align: start; /* Ensure list marker and text align correctly */
-  max-width: 75ch; /* Apply readability constraints */
-  margin-left: auto; /* Center the list block */
-  margin-right: auto; /* Center the list block */
+
+  /* Standard left padding for list items */
+  padding-left: 2em;
+
+  text-align: start;
+
+  /* Apply same width constraints as paragraphs */
+  max-width: 75ch;
+  margin-left: auto;
+  margin-right: auto;
 }
 
-/* No need for ul ul, ul ul ul specific rules unless truly necessary */
-/* Let specificity handle nested list styling if needed later */
-
+/* List item spacing */
 li {
-  /* line-height is inherited */
   margin-bottom: 0.5rem;
-  /* text-align is inherited */
 }
 
-/* fontawesome config */
+/* 
+ * ICON STYLING
+ * -----------
+ * For FontAwesome and other icon libraries
+ */
 i {
-  padding: 0; /* Keep this override */
-  display: inline-block; /* Ensure icons behave predictably */
+  padding: 0;
+  display: inline-block;
 }
 
-/* Basic flexible media */
+/* 
+ * MEDIA ELEMENTS
+ * -------------
+ * Responsive image and media handling
+ */
 img,
 video,
 svg {
   max-width: 100%;
   height: auto;
-  display: block; /* Prevents potential extra space below images */
+  display: block; /* Prevents inline gaps below images */
 }

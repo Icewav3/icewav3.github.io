@@ -1,93 +1,153 @@
-﻿/* Container styling */
-/* Header, Main, and Footer Layout */
+﻿/**
+ * BASE LAYOUT STYLES
+ * ------------------
+ * This file contains styles for the main layout structure including:
+ * - Header, footer, and main content areas
+ * - Container styling
+ * - Background effects
+ */
+
+/*
+ * MAIN STRUCTURAL ELEMENTS
+ * -----------------------
+ * Common styling for major structural elements
+ */
 header,
 main,
 footer {
-  position: relative;
-  /* Removed border-radius: 20px; as container already has it */
-  z-index: 1;
-  width: 100%; /* Ensure they take full width of the container */
-  /* Add horizontal padding to main and footer as well for consistency */
-  padding-left: var(--padding-size);
-  padding-right: var(--padding-size);
+	position: relative;
+	z-index: 1; /* Ensures content appears above background effects */
+	width: 100%; /* Take full width of container */
+
+	/* Consistent horizontal padding */
+	padding-left: var(--padding-size);
+	padding-right: var(--padding-size);
 }
 
+/*
+ * HEADER STYLING
+ * -------------
+ */
 header {
-  display: flex; /* Keep flex if needed for internal alignment */
-  justify-content: center; /* Keep if needed */
-  /* width: 100%; is inherited from the rule above */
-  /* Ensure header also has vertical padding if desired, e.g.: */
-  padding-top: var(--padding-size);
-  padding-bottom: var(--padding-size);
+	display: flex;
+	justify-content: center;
+	padding-top: var(--padding-size);
+	padding-bottom: var(--padding-size);
 }
 
+/*
+ * MAIN CONTENT AREA
+ * ----------------
+ */
 main {
-  /* Add vertical padding to main content area */
-  padding-top: var(--padding-size);
-  padding-bottom: var(--padding-size);
+	padding-top: var(--padding-size);
+	padding-bottom: var(--padding-size);
+	/* No flex properties here - content will flow naturally */
 }
 
-/* Footer might also need vertical padding if it has content */
+/*
+ * FOOTER STYLING
+ * -------------
+ */
 footer {
-  padding-top: var(--padding-size);
-  padding-bottom: var(--padding-size);
-  /* Example: If footer content should be centered */
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	padding-top: var(--padding-size);
+	padding-bottom: var(--padding-size);
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
-/* Container styling - Removed padding from here as it's now on header/main/footer */
+/*
+ * CONTAINER
+ * --------
+ * The main wrapper that contains all page content
+ */
 .container {
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-  max-width: 1200px;
-  width: 100%;
-  box-sizing: border-box;
-  align-items: center;
-  position: relative;
-  border: 2px solid var(--container-border-color);
-  border-radius: 20px;
-  background: var(--container-bg-color);
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-  margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1; /* Fill available vertical space */
+	max-width: 1200px; /* Limit maximum width */
+	width: 100%;
+	box-sizing: border-box;
+	align-items: center;
+	position: relative;
+
+	/* Visual styling */
+	border: 2px solid var(--container-border-color);
+	border-radius: 20px;
+	background: var(--container-bg-color);
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+
+	/* Center horizontally */
+	margin: 0 auto;
 }
 
-/* Push for sticky footer */
+/*
+ * STICKY FOOTER HELPER
+ * -------------------
+ * Pushes the footer to the bottom when content is short
+ * Critical for pages with minimal content
+ */
 .push {
-  flex-grow: 1;
+	flex-grow: 1;
 }
 
-/* Background Light Effects */
+/*
+ * BACKGROUND EFFECTS
+ * -----------------
+ * Creates colorful gradient orbs in the background
+ */
 .background-light {
-  position: relative;
-  left: 50%;
-  top: 50%;
-  width: 30vw;
-  height: 30vh;
-  filter: blur(var(--blur-radius));
-  opacity: 0.7;
-  pointer-events: none;
-  z-index: 0;
+	position: relative;
+	left: 50%;
+	top: 50%;
+	width: 30vw; /* Responsive sizing based on viewport width */
+	height: 30vh; /* Responsive sizing based on viewport height */
+	filter: blur(var(--blur-radius));
+	opacity: 0.7;
+	pointer-events: none; /* Prevents blocking interactions with content */
+	z-index: 0; /* Places behind content */
 }
 
+/* Positions and styles the first light effect (cyan) */
 .background-light:nth-child(1) {
-  position: absolute;
-  transform: translate(-100%, -100%);
-  background: radial-gradient(
-    circle,
-    rgba(0, 255, 255, 0.7),
-    rgba(0, 0, 255, 0) var(--gradient-strength)
-  );
+	position: absolute;
+	transform: translate(-100%, -100%);
+	background: radial-gradient(
+			circle,
+			rgba(0, 255, 255, 0.7),
+			rgba(0, 0, 255, 0) var(--gradient-strength)
+	);
 }
 
+/* Positions and styles the second light effect (green) */
 .background-light:nth-child(2) {
-  position: absolute;
-  transform: translate(0%, 0%);
-  background: radial-gradient(
-    circle,
-    rgba(0, 255, 0, 0.7),
-    rgba(0, 255, 255, 0) var(--gradient-strength)
-  );
+	position: absolute;
+	transform: translate(0%, 0%);
+	background: radial-gradient(
+			circle,
+			rgba(0, 255, 0, 0.7),
+			rgba(0, 255, 255, 0) var(--gradient-strength)
+	);
 }
+
+/**
+ * COMMON ISSUES AND TROUBLESHOOTING
+ * --------------------------------
+ *
+ * Layout shifts:
+ * - If content jumps on page load, check if images have explicit dimensions
+ * - Ensure all containers have defined widths
+ *
+ * Background effects not showing:
+ * - Verify z-index values are correct
+ * - Check that container background color isn't fully opaque
+ *
+ * Footer not sticking to bottom:
+ * - Ensure 'push' class is present
+ * - Check that body and container have flex-direction: column
+ *
+ * Content overflow:
+ * - Add overflow: hidden to .container if background effects extend beyond
+ * - Use max-width with percentage units for responsive content
+ */
