@@ -27,7 +27,8 @@
   /* Text colors */
   --primary-text-color: #ffffff; /* White text */
   --secondary-text-color: #4db8ff; /* Light blue text (headers) */
-  --tertiary-text-color: #ffd700; /* Gold text (links) */
+  --tertiary-text-color: #cccccc; /* Light gray text (attribution) */
+  --link-text-color: #ffd700; /* Gold text (links) */
   --link-hover-color: #ffec99; /* Light gold (link hover) */
 
   /* Spacing - using rem for better scaling */
@@ -78,7 +79,7 @@ body {
  * Consistent styling for all links
  */
 a {
-  color: var(--tertiary-text-color);
+  color: var(--link-text-color);
   text-decoration: underline;
   transition: color 0.3s; /* Smooth hover effect */
 }

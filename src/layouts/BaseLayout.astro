@@ -44,7 +44,7 @@ const {title = "Cole Dorman's Portfolio"} = Astro.props;
     </slot>
 
     <!-- Site creator note -->
-    <div class="creator-note">
+    <div class="attribution">
         <p>Design & code by Cole Dorman</p>
     </div>
 </div>
@@ -52,11 +52,23 @@ const {title = "Cole Dorman's Portfolio"} = Astro.props;
 </html>
 
 <style>
-	.creator-note {
+	.attribution {
 		text-align: center;
-		font-size: 0.8rem;
-		opacity: 0.7;
-		margin-top: -20px;
-		padding-bottom: 10px;
+		font-size: 0.75rem;
+		color: var(--tertiary-text-color);
+		padding: 0.5rem 0;
+		margin-top: -1rem;
+		letter-spacing: 0.05em;
+	}
+
+	.attribution p {
+		margin: 0;
+	}
+
+	@media (max-width: 768px) {
+		.attribution {
+			font-size: 0.7rem;
+		}
 	}
 </style>
+
