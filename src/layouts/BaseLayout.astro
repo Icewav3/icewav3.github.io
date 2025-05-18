@@ -42,6 +42,21 @@ const {title = "Cole Dorman's Portfolio"} = Astro.props;
     <slot name="footer">
         <Footer/> <!-- Default Footer if no slot is provided -->
     </slot>
+
+    <!-- Site creator note -->
+    <div class="creator-note">
+        <p>Design & code by Cole Dorman</p>
+    </div>
 </div>
 </body>
 </html>
+
+<style>
+	.creator-note {
+		text-align: center;
+		font-size: 0.8rem;
+		opacity: 0.7;
+		margin-top: -20px;
+		padding-bottom: 10px;
+	}
+</style>
