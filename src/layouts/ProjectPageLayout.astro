@@ -6,12 +6,37 @@ export interface Props {
     title?: string; // Optional title prop
 }
 
+/*
+TODO
+potentially edit project page layouts to a new format
+
+need to be able to have technical details but also keep attention of somone
+ not as interested
+
+Header
+Goal (why does this matter)
+Project title
+Content
+Conclusion (relating results to the goal)
+Footer
+
+
+*/
+
+
 // Use Astro.props to get props
 const {title = "Project"} = Astro.props;
 ---
 
 <BaseLayout title={title}>
     <main>
+        <section class="goal-section">
+            <slot name="goal">
+                <h2>Why This Project Matters</h2>
+                <p>This is where you'd explain the core objective or problem
+                    this project addresses.</p>
+            </slot>
+        </section>
         <slot/>
 
         <!-- Button to navigate back to projects -->
