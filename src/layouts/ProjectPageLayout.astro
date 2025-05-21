@@ -30,6 +30,9 @@ const {title = "Project"} = Astro.props;
 
 <BaseLayout title={title}>
     <main>
+        <slot name="title">
+            <h1>Project Placeholder</h1>
+        </slot>
         <section class="goal-section">
             <slot name="goal">
                 <h2>Why This Project Matters</h2>
