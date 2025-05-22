@@ -3,42 +3,9 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 ---
 <ProjectPageLayout title="Zlorp Life">
     <h1>Zlorp Life</h1>
-    <h5>
-        <u>
-            <a href="#gameIframe">
-                You can click me to skip to the bottom of the page for the
-                demo.
-            </a>
-        </u>
-    </h5>
+
     <p>This is a C# Unity game made in under 3 days with 3 other
         students as a part of PegJam2025</p>
-
-    <h2>My role in this project:</h2>
-    <p>
-        I took the role of a team lead and programmer.
-    </p>
-    <h3>My responsibilities included:</h3>
-    <ul>
-        <li>Scope management</li>
-        <li>Building the entire dialogue system from scratch</li>
-        <li>Teaching git and GitHub to new members
-        </li>
-        <li>Keeping scope in check</li>
-        <li>Managing the project's timeline and deadlines</li>
-        <li>Ensuring the art team and programmer team communicated
-            effectively
-        </li>
-        <li>Facilitating key design decisions through team discussion</li>
-        <li>The success of the project</li>
-    </ul>
-
-    <h2>Controls:</h2>
-    <p>
-        WASD to move, left click to attack.
-        Attacking decreases your health, the green pickups are health
-    </p>
-
     <!-- Game iframe section -->
     <div class="game-container">
         <iframe
@@ -65,4 +32,39 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
             your browser to play the game.
         </p>
     </noscript>
+
+    <h2>Controls:</h2>
+    <ul>
+        <li>WASD to move around</li>
+        <li><b>HOLD</b> left click to attack</li>
+        <li>Attacking decreases your health</li>
+        <li>Killing enemies drops (green) health pickups</li>
+        <li>Your current health is the amount of little balls inside of you</li>
+    </ul>
+
+    <h2>My role in this project:</h2>
+    <p>
+        I took the role of project manager and programmer.
+    </p>
+    <h3>My responsibilities included:</h3>
+    <ul>
+        <li>Project Management & Coordination</li>
+        <li>Creating the dialogue system (from scratch)</li>
+        <li>Teaching git and GitHub to new members</li>
+        <li>Ensuring everyone is comfortable!</li>
+    </ul>
+    <br>
+
+
+    <!-- Itch.io Embed -->
+    <!-- frameborder needs to be here -->
+    <!--suppress HtmlDeprecatedAttribute -->
+    <div style="display: flex; justify-content: center; width: 100%;">
+        <iframe
+                frameborder="0"
+                src="https://itch.io/embed/3351597?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
+                width="522"
+                height="165"
+        ></iframe>
+    </div>
 </ProjectPageLayout>
