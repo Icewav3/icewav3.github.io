@@ -1,10 +1,10 @@
 ﻿---
 import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
+import Image from "../../components/Image.astro";
 ---
 <ProjectPageLayout title="Asteroids">
     <main>
         <h1>Asteroids Game</h1>
-        <p>Check out this Asteroids remake I made in JavaScript:</p>
 
         <!-- Game iframe section -->
         <div class="game-container">
@@ -15,6 +15,9 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
                     loading="lazy"
             ></iframe>
         </div>
+        <a href="https://github.com/Icewav3/Asteroids" target="_blank" style="display: block; text-align: center;">
+            Github Repo
+        </a>
 
         <!-- Fallback message (no JavaScript) -->
         <noscript>
@@ -24,6 +27,32 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
             </p>
         </noscript>
 
+
+        <!--goals-->
+        <h2>Project Goals</h2>
+        <ul>
+            <li>Create a complete game without a game engine to understand low-level architecture</li>
+            <li>To gain a deeper understanding of how critical thorough planning is</li>
+            <li>Explore how project scope directly influences code quality decisions</li>
+        </ul>
+        <br>
+
+        <h2>Technical Details</h2>
+        <ul>
+            <li>This game was created entirely in Javascript</li>
+            <li>Utilized p5.js for visualization</li>
+            <li>Architecture was planned and implemented by myself</li>
+        </ul>
+        <br>
+        <!--BROKEN-->
+        <!--<Image-->
+        <!--        src="/images/Asteroids/AsteroidsClassDiagram.png"-->
+        <!--        alt="The class diagram that I followed to create Asteroids"-->
+        <!--        description="After a noun analysis I had drafted up this class diagram"-->
+        <!--        loading="eager"-->
+        <!--/>-->
+        <h2>Development Reflection</h2>
+        <!--commentary-->
         <p>
             This project was eye-opening for me as we had created it entirely
             from scratch and without a game engine. Which highlights the
@@ -39,8 +68,10 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
             more complexity as infrastructure was not designed to support them.
             As those things are added they are also exponentially increase the
             complexity as they are closer to being duct taped on rather than
-            built into the foundation. Which really highlights the importance of
-            not taking shortcuts in large scope and long term projects. If you
+            built into the foundation.
+        </p>
+        <p>
+            This really highlights the importance of not taking shortcuts in large scope and long term projects. If you
             need to refactor a bunch of base classes to allow for a new feature,
             you should base the decision on the project's scope and expected
             lifetime.
@@ -53,8 +84,17 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
             understand my code, I make sure to meticulously document everything
             and adhere to code standards.
         </p>
-        <p><a href="https://github.com/Icewav3/Asteroids" target="_blank">Github
-            Repo</a></p>
+        <!--conclusion-->
+        <h2>Conclusion</h2>
+        <p>
+            Building Asteroids without a game engine taught me how much planning and scope shape both architecture and
+            code
+            quality. It showed me how critical strong foundations are, especially when features shift mid-project. It
+            also reminded me how much my standards depend on context—and why consistent documentation and thoughtful
+            design matter when working in teams or on long-term projects.
+        </p>
+
+
     </main>
 </ProjectPageLayout>
 <style>

@@ -82,6 +82,7 @@ a {
   color: var(--link-text-color);
   text-decoration: underline;
   transition: color 0.3s; /* Smooth hover effect */
+  margin-bottom: 0.5rem;
 }
 
 a:hover {
@@ -140,7 +141,16 @@ li {
   margin-bottom: 1rem;
 }
 
-/* 
+li {
+  margin-bottom: clamp(1rem, 2vw, 1.5rem); /* keep an eye on this */
+}
+
+p {
+  /* Responsive paragraph indentation */
+  text-indent: clamp(1rem, 3vw, 2rem);
+}
+
+/*
  * LISTS
  * -----
  * Styling for unordered lists 

@@ -30,13 +30,6 @@ const {title = "Project"} = Astro.props;
 
 <BaseLayout title={title}>
     <main>
-        <section class="goal-section">
-            <slot name="goal">
-                <h2>Why This Project Matters</h2>
-                <p>This is where you'd explain the core objective or problem
-                    this project addresses.</p>
-            </slot>
-        </section>
         <slot/>
 
         <!-- Button to navigate back to projects -->
