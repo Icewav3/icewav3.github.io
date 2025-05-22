@@ -6,24 +6,6 @@ export interface Props {
     title?: string; // Optional title prop
 }
 
-/*
-TODO
-potentially edit project page layouts to a new format
-
-need to be able to have technical details but also keep attention of somone
- not as interested
-
-Header
-Goal (why does this matter)
-Project title
-Content
-Conclusion (relating results to the goal)
-Footer
-
-
-*/
-
-
 // Use Astro.props to get props
 const {title = "Project"} = Astro.props;
 ---
@@ -34,19 +16,29 @@ const {title = "Project"} = Astro.props;
         <slot name="title">
             <h1>Project Placeholder</h1>
         </slot>
+
         <!--goals section-->
         <h2>Project Goals</h2>
         <slot name="goal">
             <p>This is where you would explain the core objective or problem
                 this project addresses.</p>
         </slot>
-        <!--main content-->
+
+        <!--main content - for game display, personal commentary, etc.-->
         <slot/>
+
+        <!--technical details section-->
+        <h2>Technical Details</h2>
+        <slot name="technical-details">
+            <p>This section describes the technologies, techniques, and implementation details used in this project.</p>
+        </slot>
+
         <!--conclusion section-->
         <h2>Conclusion</h2>
         <slot name="conclusion">
             <p>Tie everything back to mission statement</p>
         </slot>
+
         <!-- Button to navigate back to projects -->
         <div class="back-button-container">
             <Button text="Back to Projects" href="/projects"/>
