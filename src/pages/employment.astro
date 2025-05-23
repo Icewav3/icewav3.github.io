@@ -1,0 +1,67 @@
+﻿---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import EmploymentEntryCard from "../components/EmploymentEntryCard.astro";
+---
+<BaseLayout>
+    <section>
+        <h1>Employment</h1>
+
+        <EmploymentEntryCard
+                jobTitle="Engineering Camp Instructor"
+                companyName="Engineering For Kids"
+                companyUrl="https://www.engineeringforkids.com/"
+                dateRange="Summer 2024"
+                description="Worked as a camp leader to teach youth about engineering and programming"
+                responsibilities={[
+                    "Teaching campers about Engineering & Programming",
+                    "Getting campers excited about learning",
+                    "Creating a supportive environment where it's ok to make mistakes",
+                    "Handling conflict",
+                    "Leading the lessons and most importantly making them engaging",
+                    "Keeping parents engaged and up to date with their child's learning"
+                ]}
+        />
+        <EmploymentEntryCard
+                jobTitle="Liquor Store Employee"
+                companyName="Marine Gateway Liquor"
+                companyUrl="https://shop.dublincrossingvancouver.com/"
+                dateRange="Summer 2023"
+                description=""
+                responsibilities={[
+                    "Customer Service",
+                    "Stocking",
+                    "Inventory Management",
+                ]}
+        />
+        <EmploymentEntryCard
+                jobTitle="Bike Camp Instructor"
+                companyName="Pedalheads"
+                companyUrl="https://www.pedalheads.com/en"
+                dateRange="Summer 2022"
+                description="Taught cycling skills to children of varying ages and abilities in a fun, supportive camp environment"
+                responsibilities={[
+                    "Instructed groups of 4-12 children aged 3-12 in bicycle safety and riding techniques",
+                    "Adapted teaching methods to accommodate different skill levels",
+                    "Maintained a safe learning environment while keeping activities engaging",
+                    "Collaborated with fellow instructors to plan daily activities and manage camp logistics",
+                    "Communicated with parents about their child's progress"
+                ]}
+        />
+        <EmploymentEntryCard
+                jobTitle="Junior Game Developer"
+                companyName="Battlecruisers - Mecha Weka"
+                companyUrl="https://battlecruisersgame.com/"
+                dateRange="July 2019 - July 2020"
+                description="During my time working at Mecha Weka I had lots of great practical experience, and extensive experience working in a collaborative Environment with other developers."
+                responsibilities={[
+                    "Building and deploying games through steamworks & google play console",
+                    "Community management & engagement, player feedback surveys and analytics",
+                    "Extensive work on bug fixing from player feedback",
+                    "Some localization work via Unity",
+                    "Leadership, I had the chance to lead the team through a sprint and I learned so much!"
+                ]}
+        />
+
+        <!-- You can add more employment entries here using the EmploymentEntry component -->
+    </section>
+</BaseLayout>

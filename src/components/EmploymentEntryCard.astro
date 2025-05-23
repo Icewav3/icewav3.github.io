@@ -1,0 +1,50 @@
+﻿---
+interface Props {
+    jobTitle: string;
+    companyName: string;
+    companyUrl?: string;
+    dateRange: string;
+    description: string;
+    responsibilities: string[];
+}
+
+const {jobTitle, companyName, companyUrl, dateRange, description, responsibilities} = Astro.props;
+---
+
+<article class="employment-entry">
+    <h2>{jobTitle}</h2>
+    <h3>
+        {companyUrl ? (
+                <a href={companyUrl} target="_blank">
+                    {companyName}
+                </a>
+        ) : (
+            companyName
+        )}
+    </h3>
+    <h4>{dateRange}</h4>
+    <p>{description}</p>
+    <ul>
+        {responsibilities.map((item) => (
+                <li>{item}</li>
+        ))}
+    </ul>
+</article>
+
+<style>
+	.employment-entry {
+		margin-bottom: 2rem;
+	}
+
+	h2, h3, h4 {
+		margin-bottom: 0.5rem;
+	}
+
+	p {
+		margin-bottom: 1rem;
+	}
+
+	ul {
+		padding-left: 1.5rem;
+	}
+</style>
