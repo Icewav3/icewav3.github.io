@@ -10,9 +10,12 @@
 
 **TODO:**
 
-1. edit color of background blue gradient to make it not wash out the text
-2. update aboutMe.astro
-3. add latest work to experience.astro
+1. Edit color of background blue gradient to make it not wash out the text
+2. Update aboutMe.astro
+
+**Low Priority**
+
+1. Make projects page sort-able as well as having tags to sort by as well as date
 
 ---
 **IN PROGRESS**
@@ -26,3 +29,4 @@
 1. Rewrite of Asteroids
 3. Rewrite of Robomb
 4. Rewrite of Zlorp
+5. Add Latest work to experience.astro
