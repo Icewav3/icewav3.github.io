@@ -66,29 +66,24 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 		gap: 1rem;
 	}
 
-	/* Remove justify-content from flex to avoid centering interfering with position: absolute */
 	.entry-header .title-section {
 		flex: 1;
 		text-align: center; /* Center the job title and company name */
 		position: relative;
 
-		/* Optional: add padding to prevent overlap */
 		padding-right: 100px; /* make space for the date if needed */
 	}
 
 	.job-title {
-		font-size: 1.5rem; /* matches existing style */
 		font-weight: 700;
-		/* Keeps the color consistent with your palette */
 		margin: 0 0 0.5rem 0;
 		line-height: 1.2;
 	}
 
 	.company-name {
-		font-size: 1.1rem; /* optimal size */
 		font-weight: 500;
 		margin: 0;
-		color: #ffd700;
+		color: var(--link-text-color);
 	}
 
 	.company-name a {
@@ -98,7 +93,7 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 	}
 
 	.company-name a:hover {
-		color: #fff;
+		color: var(--primary-text-color);
 		text-decoration: underline;
 	}
 
@@ -108,16 +103,15 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 		top: 0.5rem; /* align vertically as needed */
 		right: 1rem; /* aligns to the right edge of the container */
 		white-space: nowrap;
-		font-size: 0.95rem;
-		color: #a0a0a0;
+		font-size: var(--font-size-sm);
+		color: var(--tertiary-text-color);
 		font-weight: 500;
 		text-align: right;
 	}
 
 	.description {
-		font-size: 1rem;
 		line-height: 1.6;
-		color: #e0e0e0;
+		color: var(--tertiary-text-color);
 		margin-bottom: 1.5rem;
 		font-style: italic;
 	}
@@ -128,9 +122,8 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 	}
 
 	.responsibilities-title {
-		font-size: 1rem;
 		font-weight: 600;
-		color: #64ffda;
+		color: var(--quaternary-text-color);
 		margin: 0 0 1rem 0;
 		text-transform: uppercase;
 		letter-spacing: 0.5px;
@@ -146,7 +139,7 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 		position: relative;
 		padding-left: 1.5rem;
 		margin-bottom: 0.8rem;
-		color: #d0d0d0;
+		color: var(--tertiary-text-color);
 		line-height: 1.5;
 	}
 
@@ -154,7 +147,7 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 		content: "▸";
 		position: absolute;
 		left: 0;
-		color: #64ffda;
+		color: var(--quaternary-text-color);
 		font-weight: bold;
 	}
 
@@ -172,14 +165,6 @@ const {jobTitle, companyName, companyUrl, dateRange, description, responsibiliti
 
 		.date-range {
 			text-align: left;
-		}
-
-		.job-title {
-			font-size: 1.3rem;
-		}
-
-		.company-name {
-			font-size: 1rem;
 		}
 	}
 </style>
