@@ -28,6 +28,7 @@
   --primary-text-color: #ffffff; /* White text */
   --secondary-text-color: #4db8ff; /* Light blue text (headers) */
   --tertiary-text-color: #cccccc; /* Light gray text (attribution) */
+  --quaternary-text-color: #64ffda; /* Light green text (highlights) */
   --link-text-color: #ffd700; /* Gold text (links) */
   --link-hover-color: #ffec99; /* Light gold (link hover) */
 

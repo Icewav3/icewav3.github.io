@@ -1,6 +1,12 @@
 [My portfolio](https://icewav3.github.io/)
 
 ---
+**BUGS**
+
+1. Gradient background does move with increased page length
+
+---
+
 
 **TODO:**
 
