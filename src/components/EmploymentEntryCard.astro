@@ -1,0 +1,170 @@
+﻿---
+interface Props {
+    jobTitle: string;
+    companyName: string;
+    companyUrl?: string;
+    dateRange: string;
+    description: string;
+    responsibilities: string[];
+}
+
+const {jobTitle, companyName, companyUrl, dateRange, description, responsibilities} = Astro.props;
+---
+
+<article class="employment-entry">
+    <header class="entry-header">
+        <div class="title-section">
+            <h2 class="job-title">{jobTitle}</h2>
+            <h3 class="company-name">
+                {companyUrl ? (
+                        <a href={companyUrl} target="_blank" rel="noopener noreferrer">
+                            {companyName}
+                        </a>
+                ) : (
+                    companyName
+                )}
+            </h3>
+        </div>
+        <div class="date-range">{dateRange}</div>
+    </header>
+
+    <p class="description">{description}</p>
+    <div class="responsibilities-section">
+        <h4 class="responsibilities-title">Key Responsibilities:</h4>
+        <ul class="responsibilities-list">
+            {responsibilities.map((item) => (
+                    <li class="responsibility-item">{item}</li>
+            ))}
+        </ul>
+    </div>
+</article>
+<style>
+	/* Employment entry styles, globally available for all similar components */
+	.employment-entry {
+		background: rgba(255, 255, 255, 0.05);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		border-radius: 12px;
+		padding: 2rem;
+		margin-bottom: 2.5rem;
+		backdrop-filter: blur(var(--blur-radius));
+		transition: all 0.3s ease;
+	}
+
+	.employment-entry:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+		border-color: rgba(255, 255, 255, 0.2);
+	}
+
+	/* Make the entry-header container relatively positioned to anchor absolute items inside */
+	.entry-header {
+		position: relative;
+		display: flex;
+		justify-content: center; /* Keep the content centered */
+		align-items: flex-start;
+		margin-bottom: 1.5rem;
+		gap: 1rem;
+	}
+
+	.entry-header .title-section {
+		flex: 1;
+		text-align: center; /* Center the job title and company name */
+		position: relative;
+
+		padding-right: 100px; /* make space for the date if needed */
+	}
+
+	.job-title {
+		font-weight: 700;
+		margin: 0 0 0.5rem 0;
+		line-height: 1.2;
+	}
+
+	.company-name {
+		font-weight: 500;
+		margin: 0;
+		color: var(--link-text-color);
+	}
+
+	.company-name a {
+		color: inherit;
+		text-decoration: none;
+		transition: color 0.3s ease;
+	}
+
+	.company-name a:hover {
+		color: var(--primary-text-color);
+		text-decoration: underline;
+	}
+
+	/* Position the date-range absolutely within the header container */
+	.date-range {
+		position: absolute;
+		top: 0.5rem; /* align vertically as needed */
+		right: 1rem; /* aligns to the right edge of the container */
+		white-space: nowrap;
+		font-size: var(--font-size-sm);
+		color: var(--tertiary-text-color);
+		font-weight: 500;
+		text-align: right;
+	}
+
+	.description {
+		line-height: 1.6;
+		color: var(--tertiary-text-color);
+		margin-bottom: 1.5rem;
+		font-style: italic;
+	}
+
+	/* Responsibilities Section */
+	.responsibilities-section {
+		margin-top: 1.5rem;
+	}
+
+	.responsibilities-title {
+		font-weight: 600;
+		color: var(--quaternary-text-color);
+		margin: 0 0 1rem 0;
+		text-transform: uppercase;
+		letter-spacing: 0.5px;
+	}
+
+	.responsibilities-list {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+	}
+
+	.responsibility-item {
+		position: relative;
+		padding-left: 1.5rem;
+		margin-bottom: 0.8rem;
+		color: var(--tertiary-text-color);
+		line-height: 1.5;
+	}
+
+	.responsibility-item::before {
+		content: "▸";
+		position: absolute;
+		left: 0;
+		color: var(--quaternary-text-color);
+		font-weight: bold;
+	}
+
+	/* Responsive styles, extending your existing media queries if needed */
+	@media (max-width: 768px) {
+		.employment-entry {
+			padding: 1.5rem;
+			margin-bottom: 2rem;
+		}
+
+		.entry-header {
+			flex-direction: column;
+			align-items: flex-start;
+		}
+
+		.date-range {
+			text-align: left;
+		}
+	}
+</style>
