@@ -1,0 +1,245 @@
+﻿---
+export interface FilterControlsProps {
+    allTags: string[];
+}
+const {allTags} = Astro.props;
+---
+
+<div class="filter-controls" id="filter-controls" style="display: none;">
+    <div class="filter-section">
+        <label for="sort-select">Sort by:</label>
+        <select id="sort-select" class="filter-select">
+            <option value="date-desc">Newest First</option>
+            <option value="date-asc">Oldest First</option>
+            <option value="title-asc">Title A-Z</option>
+            <option value="title-desc">Title Z-A</option>
+        </select>
+    </div>
+
+    <div class="filter-section">
+        <span class="filter-label">Filter by tags:</span>
+        <div class="tags-container">
+            {allTags.map((tag: string) => {
+                const sanitizedTag = tag.replace(/[^a-zA-Z0-9-_]/g, '-');
+                return (
+                        <div class="tag-filter" data-tag={tag}>
+                            <input type="checkbox" class="tag-checkbox" value={tag} id={`tag-${sanitizedTag}`}/>
+                            <label for={`tag-${sanitizedTag}`} class="tag-label">{tag}</label>
+                        </div>
+                );
+            })}
+        </div>
+    </div>
+
+    <button id="clear-filters" class="clear-button">Clear All Filters</button>
+</div>
+
+<style>
+	.filter-controls {
+		flex-direction: column;
+		gap: var(--padding-size);
+		margin-bottom: calc(var(--padding-size) * 1.5);
+		padding: var(--padding-size);
+		background-color: rgba(77, 184, 255, 0.1);
+		border-radius: 10px;
+		border: 1px solid var(--container-border-color);
+	}
+
+	.filter-section {
+		display: flex;
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+
+	.filter-label,
+	.filter-section > label {
+		color: var(--secondary-text-color);
+		font-size: var(--font-size-sm);
+		font-weight: bold;
+	}
+
+	.filter-select {
+		padding: 0.5rem;
+		border-radius: 5px;
+		border: 1px solid var(--container-border-color);
+		background-color: var(--container-bg-color);
+		color: var(--primary-text-color);
+		font-family: inherit;
+		font-size: var(--font-size-sm);
+		max-width: 200px;
+	}
+
+	.filter-select:focus {
+		outline: 2px solid var(--quaternary-text-color);
+		outline-offset: 2px;
+	}
+
+	.tags-container {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.tag-filter {
+		display: flex;
+		align-items: center;
+		gap: 0.4rem;
+		padding: 0.5rem 0.75rem;
+		border-radius: 20px;
+		border: 1px solid var(--container-border-color);
+		background-color: var(--container-bg-color);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		user-select: none;
+		position: relative;
+	}
+
+	/* Desktop hover effects */
+	@media (hover: hover) and (pointer: fine) {
+		.tag-filter:hover {
+			background-color: rgba(77, 184, 255, 0.2);
+			transform: translateY(-1px);
+			box-shadow: 0 2px 8px rgba(77, 184, 255, 0.3);
+		}
+
+		.clear-button:hover {
+			background-color: var(--secondary-text-color);
+			color: var(--main-bg-color);
+			transform: translateY(-1px);
+			box-shadow: 0 2px 8px rgba(77, 184, 255, 0.3);
+		}
+	}
+
+	/* Mobile/touch hover effects (no transforms) */
+	@media (hover: none) or (pointer: coarse) {
+		.tag-filter:hover,
+		.tag-filter:active {
+			background-color: rgba(77, 184, 255, 0.2);
+			box-shadow: 0 2px 8px rgba(77, 184, 255, 0.3);
+			/* No transform on mobile */
+		}
+
+		.clear-button:hover,
+		.clear-button:active {
+			background-color: var(--secondary-text-color);
+			color: var(--main-bg-color);
+			box-shadow: 0 2px 8px rgba(77, 184, 255, 0.3);
+			/* No transform on mobile */
+		}
+	}
+
+	.tag-filter:focus {
+		outline: 2px solid var(--quaternary-text-color);
+		outline-offset: 2px;
+	}
+
+	.tag-filter.active {
+		background-color: var(--quaternary-text-color);
+		color: var(--main-bg-color);
+		border-color: var(--quaternary-text-color);
+		box-shadow: 0 2px 12px rgba(100, 255, 218, 0.4);
+	}
+
+	.tag-filter.active .tag-label {
+		color: var(--main-bg-color);
+		font-weight: bold;
+	}
+
+	.tag-filter.active .tag-checkbox {
+		accent-color: var(--main-bg-color);
+	}
+
+	.tag-checkbox {
+		margin: 0;
+		width: 16px;
+		height: 16px;
+		accent-color: var(--quaternary-text-color);
+		cursor: pointer;
+		flex-shrink: 0;
+	}
+
+	.tag-label {
+		font-size: var(--font-size-xs);
+		color: var(--primary-text-color);
+		transition: color 0.3s ease;
+		pointer-events: none;
+		font-weight: 500;
+	}
+
+	.clear-button {
+		align-self: flex-start;
+		padding: 0.5rem 1rem;
+		border-radius: 8px;
+		border: 1px solid var(--container-border-color);
+		background-color: var(--container-bg-color);
+		color: var(--secondary-text-color);
+		font-family: inherit;
+		font-size: var(--font-size-sm);
+		cursor: pointer;
+		transition: all 0.3s ease;
+		font-weight: 500;
+	}
+
+	.clear-button:focus {
+		outline: 2px solid var(--quaternary-text-color);
+		outline-offset: 2px;
+	}
+
+	.clear-button:active {
+		transform: translateY(0);
+	}
+
+	/* Mobile responsive design */
+	@media (max-width: 768px) {
+		.filter-controls {
+			padding: calc(var(--padding-size) * 0.75);
+		}
+
+		.filter-section {
+			align-items: flex-start;
+		}
+
+		.filter-select {
+			max-width: 100%;
+		}
+
+		.tags-container {
+			justify-content: flex-start;
+		}
+
+		.tag-filter {
+			padding: 0.4rem 0.6rem;
+			gap: 0.3rem;
+		}
+
+		.tag-checkbox {
+			width: 14px;
+			height: 14px;
+		}
+
+		.tag-label {
+			font-size: var(--font-size-xs);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.filter-controls {
+			gap: calc(var(--padding-size) * 0.75);
+		}
+
+		.tag-filter {
+			padding: 0.35rem 0.5rem;
+			gap: 0.25rem;
+		}
+
+		.tag-checkbox {
+			width: 12px;
+			height: 12px;
+		}
+
+		.clear-button {
+			padding: 0.4rem 0.8rem;
+			font-size: var(--font-size-xs);
+		}
+	}
+</style>

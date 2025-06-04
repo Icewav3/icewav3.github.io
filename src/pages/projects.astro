@@ -1,81 +1,142 @@
 ﻿---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import ProjectCard from "../components/ProjectCard.astro"
+import FilterControls from "../components/FilterControls.astro"
+
+// Define project data with metadata
+const projects = [
+    {
+        title: "Robomb",
+        previewImage: "/images/Robomb/Robomb_Thumbnail.png",
+        demoImage: "/images/Robomb/RobombPreview.webp",
+        link: "/projects/Robomb",
+        tags: ["Unreal Engine", "Mobile", "Desktop", "Physics", "Blueprint"],
+        date: new Date("2025-03-15"),
+    },
+    {
+        title: "UE5 Chaos System",
+        previewImage: "/images/UnrealChaosSystem/ChaosDestructionSystemPreview.png",
+        demoImage: "/images/UnrealChaosSystem/ChaosDestructionBig.webp",
+        link: "/projects/UnrealChaosSystem",
+        tags: ["Unreal Engine", "Technical", "Destruction", "Physics", "Blueprint"],
+        date: new Date("2025-02-28"),
+    },
+    {
+        title: "Asteroids",
+        previewImage: "/images/Asteroids/AsteroidsPreview.png",
+        demoImage: "/images/Asteroids/Asteroids.gif",
+        link: "/projects/AsteroidsGame",
+        tags: ["JavaScript", "Desktop", "Physics", "Web"],
+        date: new Date("2025-03-11"),
+    },
+    {
+        title: "Zlorp Life",
+        previewImage: "/images/ZlorpLife/ZlorpLifePreview.png",
+        demoImage: "/images/ZlorpLife/ZlorpLifeDemo.gif",
+        link: "/projects/ZlorpLifeContainer",
+        tags: ["Unity", "C#", "Desktop", "Web"],
+        date: new Date("2024-11-15"),
+    },
+    {
+        title: "Miku's Mall Madness",
+        previewImage: "/images/MikusMallMadness/MikusMallMadnessPreview.png",
+        demoImage: "/images/MikusMallMadness/MikusMallMadnessDemo.gif",
+        link: "/projects/MikusMallMadnessContainer",
+        tags: ["Unity", "C#", "Mobile"],
+        date: new Date("2024-12-20"),
+        hidden: true,
+    },
+    {
+        title: "Simple Platformer",
+        previewImage: "/images/MathPlatformer/platformerPreview.png",
+        demoImage: "/images/MathPlatformer/platformer.gif",
+        link: "/projects/PlatformerGame",
+        tags: ["JavaScript", "Platformer", "Desktop", "Web"],
+        date: new Date("2024-12-11"),
+    }
+];
+
+// Extract all unique tags for filter controls
+const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
 ---
-<BaseLayout>
+
+<BaseLayout title="Projects - Cole Dorman's Portfolio">
     <section id="projects">
         <h1>Projects</h1>
-        <h3>Mobile friendly</h3>
-        <p>
-            Select one of the games below to try out demos or videos and read
-            about my
-            role in the project.
-            This section contains mobile friendly demos or videos.
-        </p>
-        <!-- Add .projects-grid to wrap the ProjectCards -->
-        <div class="projects-grid">
-            <ProjectCard
-                    title="Robomb"
-                    previewImage="/images/Robomb/Robomb_Thumbnail.png"
-                    demoImage="/images/Robomb/RobombPreview.webp"
-                    link="/projects/Robomb"
-            />
-            <ProjectCard
-                    title="UE5 Chaos System"
-                    previewImage="/images/UnrealChaosSystem/ChaosDestructionSystemPreview.png"
-                    demoImage="/images/UnrealChaosSystem/ChaosDestructionBig.webp"
-                    link="/projects/UnrealChaosSystem"
-            />
-            <ProjectCard
-                    title="Miku's Mall Madness"
-                    previewImage="/images/MikusMallMadness/MikusMallMadnessPreview.png"
-                    demoImage="/images/MikusMallMadness/MikusMallMadnessDemo.gif"
-                    link="/projects/MikusMallMadnessContainer"
-            />
-        </div>
 
-        <h3>Desktop/Laptop only</h3>
-        <p>
-            These projects will only work with adequate screen resolutions and a
-            keyboard.
+        <p class="projects-description">
+            Explore my collection of games and interactive projects. Each project showcases different
+            technologies and approaches to game development, from mobile-friendly experiences to
+            desktop applications.
         </p>
-        <!-- Add .projects-grid to wrap ProjectCards -->
-        <div class="projects-grid">
-            <ProjectCard
-                    title="Zlorp Life"
-                    previewImage="/images/ZlorpLife/ZlorpLifePreview.png"
-                    demoImage="/images/ZlorpLife/ZlorpLifeDemo.gif"
-                    link="/projects/ZlorpLifeContainer"
-            />
-            <ProjectCard
-                    title="Simple Platformer"
-                    previewImage="/images/MathPlatformer/platformerPreview.png"
-                    demoImage="/images/MathPlatformer/platformer.gif"
-                    link="/projects/PlatformerGame"
-            />
-            <ProjectCard
-                    title="Asteroids"
-                    previewImage="/images/Asteroids/AsteroidsPreview.png"
-                    demoImage="/images/Asteroids/Asteroids.gif"
-                    link="/projects/AsteroidsGame"
-            />
+
+        <FilterControls allTags={allTags}/>
+
+        <div class="projects-grid" id="projects-grid">
+            {projects.map(project => (
+                    <ProjectCard
+                            title={project.title}
+                            previewImage={project.previewImage}
+                            demoImage={project.demoImage}
+                            link={project.link}
+                            tags={project.tags}
+                            date={project.date}
+                            hidden={project.hidden || false}
+                    />
+            ))}
         </div>
     </section>
 </BaseLayout>
 
 <style>
+	#projects {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		width: 100%;
+	}
+
+	.projects-description {
+		color: var(--tertiary-text-color);
+		font-size: var(--font-size-md);
+		max-width: 60ch;
+		margin: 0 auto calc(var(--padding-size) * 1.5);
+		text-align: center;
+		line-height: var(--line-height-normal);
+	}
+
 	.projects-grid {
 		display: grid;
 		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: 20px;
-		margin-top: 20px;
-		justify-items: center;
+		gap: calc(var(--padding-size) * 1.25);
 		width: 100%;
+		max-width: 1000px;
+		justify-items: center;
 	}
 
 	@media (max-width: 768px) {
 		.projects-grid {
-			grid-template-columns: 1fr; /* Single column on smaller screens */
+			grid-template-columns: 1fr;
+			gap: var(--padding-size);
+		}
+
+		.projects-description {
+			font-size: var(--font-size-sm);
+			max-width: 50ch;
+			margin-bottom: var(--padding-size);
+		}
+	}
+
+	@media (max-width: 480px) {
+		.projects-grid {
+			gap: calc(var(--padding-size) * 0.75);
+		}
+
+		.projects-description {
+			font-size: var(--font-size-xs);
+			margin-bottom: calc(var(--padding-size) * 0.75);
 		}
 	}
 </style>
+
+<script src="../scripts/projectFilters.js"></script>
