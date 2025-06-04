@@ -157,12 +157,17 @@ class ProjectFilter {
   }
 
   sortCards(cards, sortValue) {
+    const parseDate = (dateString) => {
+      const parsedDate = new Date(dateString);
+      return isNaN(parsedDate) ? new Date(0) : parsedDate;
+    };
+
     cards.sort((a, b) => {
       switch (sortValue) {
         case "date-asc":
-          return new Date(a.dataset.date) - new Date(b.dataset.date);
+          return parseDate(a.dataset.date) - parseDate(b.dataset.date);
         case "date-desc":
-          return new Date(b.dataset.date) - new Date(a.dataset.date);
+          return parseDate(b.dataset.date) - parseDate(a.dataset.date);
         case "title-asc":
           return a.dataset.title.localeCompare(b.dataset.title);
         case "title-desc":
