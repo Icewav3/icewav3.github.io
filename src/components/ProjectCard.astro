@@ -5,13 +5,27 @@ export interface ProjectCardProps {
     previewImage: string;
     demoImage: string;
     link: string;
+    tags?: string[];
+    date?: Date;
+    hidden?: boolean;
 }
-const {title, previewImage, demoImage, link} = Astro.props;
+const {title, previewImage, demoImage, link, tags = [], date, hidden = false} = Astro.props;
+
+// Don't render if hidden is true (prevents showing even without JS)
+if (hidden) {
+    return null;
+}
 ---
-<div class={styles['project-card']} onclick={`window.location.href='${link}'`}>
+<a
+        href={link}
+        class={styles['project-card']}
+        data-tags={tags.join(',')}
+        data-date={date?.toISOString() || ''}
+        data-title={title.toLowerCase()}
+>
     <img alt={`${title} Preview`} class={styles['png-image']}
          src={previewImage}/>
     <img alt={`${title} Demo`} class={styles['gif-image']} src={demoImage}
          loading="eager"/>
     <span class={styles['project-title']}>{title}</span>
-</div>
+</a>
