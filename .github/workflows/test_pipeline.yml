@@ -1,0 +1,228 @@
+﻿name: Test Pipeline (Manual)
+
+on:
+  # Only allow manual triggering for testing
+  workflow_dispatch:
+    inputs:
+      run_accessibility_tests:
+        description: 'Run accessibility tests'
+        required: false
+        default: true
+        type: boolean
+      run_performance_tests:
+        description: 'Run performance tests'
+        required: false
+        default: true
+        type: boolean
+      performance_threshold:
+        description: 'Performance score threshold (0-100)'
+        required: false
+        default: '90'
+        type: string
+
+jobs:
+  test-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout your repository using git
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: TypeScript type checking
+        run: npx tsc --noEmit
+
+      - name: Lint code quality
+        run: |
+          npm install --no-save eslint @typescript-eslint/eslint-plugin @typescript-eslint/parser
+          npx eslint src --ext .ts,.tsx,.astro --max-warnings 0
+
+      - name: Code formatting check
+        run: npx prettier --check .
+
+      - name: Astro check (syntax and type errors)
+        run: npx astro check
+
+      - name: Build site
+        run: npm run build
+
+      - name: HTML validation
+        run: |
+          npm install --no-save html-validate
+          find dist -name "*.html" -exec npx html-validate {} +
+
+      - name: Unity WebGL optimization check
+        run: |
+          if find dist -name "*.wasm" -o -name "*.js" | grep -q "\.unityweb\|Build"; then
+            echo "Unity WebGL builds detected. Checking optimization..."
+          
+            # Check if builds are using compression
+            if find dist -name "*.br" -o -name "*.gz" | grep -q .; then
+              echo "✓ Compressed builds detected"
+            else
+              echo "⚠️  Warning: No compressed Unity builds found. Enable Build compression in Unity Player Settings."
+            fi
+          
+            # Check for debug builds (much larger than release)
+            if find dist -name "*development*" -o -name "*debug*" | grep -qi unity; then
+              echo "❌ Error: Debug Unity builds detected in production!"
+              exit 1
+            fi
+          
+            echo "Unity optimization check complete."
+          else
+            echo "No Unity WebGL builds detected."
+          fi
+
+      - name: Accessibility testing
+        if: ${{ inputs.run_accessibility_tests == 'true' }}
+        run: |
+          npm install --no-save @axe-core/cli http-server
+          
+          # Start server in background
+          cd dist && npx http-server -p 8080 -s &
+          SERVER_PID=$!
+          
+          # Wait for server to start
+          sleep 5
+          
+          # Run accessibility tests on all pages
+          echo "Testing accessibility on main pages..."
+          npx axe http://localhost:8080 --exit || echo "Main page accessibility issues found"
+          npx axe http://localhost:8080/aboutMe --exit || echo "About page accessibility issues found"
+          npx axe http://localhost:8080/employment --exit || echo "Employment page accessibility issues found"
+          npx axe http://localhost:8080/projects --exit || echo "Projects page accessibility issues found"
+          
+          # Kill the server
+          kill $SERVER_PID
+
+      - name: Performance and SEO audit
+        if: ${{ inputs.run_performance_tests == 'true' }}
+        run: |
+          npm install --no-save lighthouse
+          
+          # Start server in background
+          cd dist && npx http-server -p 8080 -s &
+          SERVER_PID=$!
+          
+          # Wait for server to start
+          sleep 5
+          
+          # Run Lighthouse with configurable performance threshold
+          PERF_THRESHOLD=${{ inputs.performance_threshold }}
+          echo "Testing with performance threshold: $PERF_THRESHOLD"
+          
+          npx lighthouse http://localhost:8080 \
+            --chrome-flags="--headless --no-sandbox" \
+            --output=json \
+            --output-path=./lighthouse-report.json \
+            --preset=desktop \
+            --only-categories=performance,seo
+          
+          # Check scores
+          PERF_SCORE=$(node -p "Math.round(JSON.parse(require('fs').readFileSync('./lighthouse-report.json')).categories.performance.score * 100)")
+          SEO_SCORE=$(node -p "Math.round(JSON.parse(require('fs').readFileSync('./lighthouse-report.json')).categories.seo.score * 100)")
+          
+          echo "Performance Score: $PERF_SCORE"
+          echo "SEO Score: $SEO_SCORE"
+          echo "Performance Threshold: $PERF_THRESHOLD"
+          
+          if [ $PERF_SCORE -lt $PERF_THRESHOLD ]; then
+            echo "⚠️  Performance score below threshold: $PERF_SCORE < $PERF_THRESHOLD"
+          else
+            echo "✓ Performance score meets threshold"
+          fi
+          
+          if [ $SEO_SCORE -lt 95 ]; then
+            echo "⚠️  SEO score below 95: $SEO_SCORE"
+          else
+            echo "✓ SEO score meets threshold"
+          fi
+          
+          # Kill the server
+          kill $SERVER_PID
+
+      - name: Check for broken links
+        run: |
+          npm install --no-save broken-link-checker http-server
+          
+          # Start server in background
+          cd dist && npx http-server -p 8080 -s &
+          SERVER_PID=$!
+          
+          # Wait for server to start
+          sleep 5
+          
+          # Run link checker with detailed output for testing
+          echo "Running comprehensive link check..."
+          npx blc http://localhost:8080 \
+            --recursive \
+            --ordered \
+            --exclude="linkedin.com,twitter.com,facebook.com" \
+            --filter-level=1 \
+            --timeout=10000 \
+            --max-sockets=5 \
+            --max-sockets-per-host=2 \
+            --verbose || echo "Some links may be broken - check output above"
+          
+          # Kill the server
+          kill $SERVER_PID
+
+      - name: Check bundle size
+        run: |
+          # Check if bundle sizes are reasonable for a portfolio with Unity games
+          DIST_SIZE=$(du -sb dist | cut -f1)
+          MAX_SIZE=$((500 * 1024 * 1024))  # 500MB limit for Unity game portfolio
+          
+          # Also check individual Unity builds aren't excessively large
+          if [ -d "dist/games" ] || [ -d "dist/projects" ]; then
+            echo "Checking individual Unity game sizes..."
+            find dist -name "*.wasm" -exec ls -lh {} + || true
+          
+            # Warn if any single .wasm file is over 100MB
+            find dist -name "*.wasm" -size +100M -exec echo "Warning: Large WASM file found: {}" \; -exec ls -lh {} \;
+          
+            # Check if any single .wasm file is over 200MB
+            LARGE_WASM_COUNT=$(find dist -name "*.wasm" -size +200M | wc -l)
+            if [ $LARGE_WASM_COUNT -gt 0 ]; then
+              echo "⚠️  Found WASM files larger than 200MB:"
+              find dist -name "*.wasm" -size +200M -exec ls -lh {} \;
+              echo "This likely indicates an optimization issue."
+            fi
+          fi
+          
+          echo "Total bundle size: $(($DIST_SIZE / 1024 / 1024))MB"
+          echo "Max allowed: $(($MAX_SIZE / 1024 / 1024))MB"
+          
+          if [ $DIST_SIZE -gt $MAX_SIZE ]; then
+            echo "⚠️  Bundle size exceeds limit!"
+            echo "Consider:"
+            echo "- Optimizing Unity build settings"
+            echo "- Using Unity's compression options"
+            echo "- Splitting games across multiple pages"
+            echo "- Using lazy loading for game assets"
+          else
+            echo "✓ Bundle size within limits"
+          fi
+          
+          # Provide helpful size breakdown
+          echo "Size breakdown:"
+          du -sh dist/* 2>/dev/null | sort -hr || true
+
+      - name: Test Summary
+        if: always()
+        run: |
+          echo "=================================="
+          echo "           TEST SUMMARY           "
+          echo "=================================="
+          echo "All pipeline tests completed!"
+          echo "Check the logs above for any issues."
+          echo "Once you're satisfied with the results,"
+          echo "you can apply these changes to your main deploy.yml"
