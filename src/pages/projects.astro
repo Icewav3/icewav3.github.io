@@ -88,6 +88,7 @@ const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
     </section>
 </BaseLayout>
 
+
 <style>
 	#projects {
 		display: flex;
@@ -103,6 +104,13 @@ const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
 		margin: 0 auto calc(var(--padding-size) * 1.5);
 		text-align: center;
 		line-height: var(--line-height-normal);
+	}
+
+	/* Add this rule to constrain filter controls width */
+	.projects-description,
+	:global(.filter-controls) {
+		max-width: 1000px; /* Match the projects-grid max-width */
+		width: 100%;
 	}
 
 	.projects-grid {
