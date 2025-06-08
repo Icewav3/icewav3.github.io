@@ -13,6 +13,12 @@
 1. Edit color of background blue gradient to make it not wash out the text
 2. Update aboutMe.astro
 
+**HIGH PRIORITY**
+1. Fix pop in??? idk how that even happen
+
+
+---
+
 **Low Priority**
 
 1. Make projects page sort-able as well as having tags to sort by as well as date
