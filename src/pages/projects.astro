@@ -1,7 +1,6 @@
 ﻿---
 import BaseLayout from "../layouts/BaseLayout.astro"
 import ProjectCard from "../components/ProjectCard.astro"
-import FilterControls from "../components/FilterControls.astro"
 
 // Define project data with metadata
 const projects = [
@@ -113,8 +112,6 @@ const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
             desktop applications.
         </p>
 
-        <FilterControls allTags={allTags}/>
-
         <div class="projects-grid" id="projects-grid">
             {projects.map(project => (
                     <ProjectCard
@@ -133,61 +130,58 @@ const allTags = [...new Set(projects.flatMap(project => project.tags))].sort();
 
 
 <style>
-	#projects {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		width: 100%;
-	}
+    #projects {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+    }
 
-	.projects-description {
-		color: var(--tertiary-text-color);
-		font-size: var(--font-size-md);
-		max-width: 60ch;
-		margin: 0 auto calc(var(--padding-size) * 1.5);
-		text-align: center;
-		line-height: var(--line-height-normal);
-	}
+    .projects-description {
+        color: var(--tertiary-text-color);
+        font-size: var(--font-size-md);
+        max-width: 60ch;
+        margin: 0 auto calc(var(--padding-size) * 1.5);
+        text-align: center;
+        line-height: var(--line-height-normal);
+    }
 
-	/* Add this rule to constrain filter controls width */
-	.projects-description,
-	:global(.filter-controls) {
-		max-width: 1000px; /* Match the projects-grid max-width */
-		width: 100%;
-	}
+    /* Add this rule to constrain filter controls width */
+    .projects-description {
+        max-width: 1000px; /* Match the projects-grid max-width */
+        width: 100%;
+    }
 
-	.projects-grid {
-		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-		gap: calc(var(--padding-size) * 1.25);
-		width: 100%;
-		max-width: 1000px;
-		justify-items: center;
-	}
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: calc(var(--padding-size) * 1.25);
+        width: 100%;
+        max-width: 1000px;
+        justify-items: center;
+    }
 
-	@media (max-width: 768px) {
-		.projects-grid {
-			grid-template-columns: 1fr;
-			gap: var(--padding-size);
-		}
+    @media (max-width: 768px) {
+        .projects-grid {
+            grid-template-columns: 1fr;
+            gap: var(--padding-size);
+        }
 
-		.projects-description {
-			font-size: var(--font-size-sm);
-			max-width: 50ch;
-			margin-bottom: var(--padding-size);
-		}
-	}
+        .projects-description {
+            font-size: var(--font-size-sm);
+            max-width: 50ch;
+            margin-bottom: var(--padding-size);
+        }
+    }
 
-	@media (max-width: 480px) {
-		.projects-grid {
-			gap: calc(var(--padding-size) * 0.75);
-		}
+    @media (max-width: 480px) {
+        .projects-grid {
+            gap: calc(var(--padding-size) * 0.75);
+        }
 
-		.projects-description {
-			font-size: var(--font-size-xs);
-			margin-bottom: calc(var(--padding-size) * 0.75);
-		}
-	}
+        .projects-description {
+            font-size: var(--font-size-xs);
+            margin-bottom: calc(var(--padding-size) * 0.75);
+        }
+    }
 </style>
-
-<script src="../scripts/projectFilters.js"></script>
