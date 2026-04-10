@@ -1,11 +1,13 @@
 ﻿---
 import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
+import Image from "../../components/Image.astro";
 ---
 <ProjectPageLayout title="Zlorp Life">
     <h1>Zlorp Life</h1>
 
     <p>This is a C# Unity game made in under 3 days with 3 other
-        students as a part of PegJam2025</p>
+        students as a part of Themed game jam; PegJam2025. The theme we had to work with was unconventional weapon, so I proposed the most unconventional weapon of all, your own limbs!
+    </p>
     <!-- Game iframe section -->
     <div class="game-container">
         <iframe
@@ -27,7 +29,7 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
 
     <!-- Fallback message (no JavaScript) -->
     <noscript>
-        <p style="color: var(--primary-text-color); text-align: center;">
+        <p style="color: var(--primary-text-color); text-align: center; ">
             The game requires JavaScript to run. Please enable JavaScript in
             your browser to play the game.
         </p>
@@ -42,9 +44,18 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
         <li>Your current health is the amount of little balls inside of you</li>
     </ul>
 
+    <Image
+            alt="A short gif of the player attacking an enemy, and collecting the health pickups it drops afterward"
+            description="Shown here you can see when attacking, you lose 1 health (signified by the orbs inside the player) and once you have killed the enemy they will drop health pickups to compensate for the lost health."
+            src="/images/ZlorpLife/ZlorpLifeHealthDemo.gif"
+    />
+
     <h2>My role in this project:</h2>
     <p>
         I took the role of project manager and programmer.
+        The entire dialogue system was created from scratch during the game jam by myself.
+        I also was responsible for UI creation layout and Scene/Game state management.
+        Which I had implemented a global service manager style singleton.
     </p>
     <h3>My responsibilities included:</h3>
     <ul>

@@ -17,10 +17,11 @@ import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
     </div>
 
     <!-- Dynamically determine mobile/desktop game in JavaScript -->
+    <!-- currently exetremely unresponsive, need to force resize it-->
     <script>            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
     const iframe = document.getElementById("gameIframe");
     if (iframe) {
-        iframe.src = isMobile ? "/GoblinGame/index.html" : "/GoblinGame/index.html";
+        iframe.src = isMobile ? "/GalacticGoblinGimmicks/index.html" : "/GalacticGoblinGimmicks/index.html";
     } else {
         console.error("Error: Game iframe not found.");
     }</script>
