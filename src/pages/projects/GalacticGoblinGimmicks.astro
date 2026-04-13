@@ -7,7 +7,7 @@ import Image from "../../components/Image.astro";
 
     <p>This is a C# Unity game made over a weekend with 3 other
         students as a part of PegJam2026</p>
-    <!-- Game iframe section -->
+    <!-- TODO: Re-enable game iframe once sizing is fixed
     <div class="game-container">
         <iframe
                 id="gameIframe"
@@ -16,24 +16,22 @@ import Image from "../../components/Image.astro";
                 loading="lazy"
         ></iframe>
     </div>
-
-    <!-- Dynamically determine mobile/desktop game in JavaScript -->
-    <!-- currently exetremely unresponsive, need to force resize it-->
-    <script>            const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
+    <script>
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
     const iframe = document.getElementById("gameIframe");
     if (iframe) {
         iframe.src = isMobile ? "/GalacticGoblinGimmicks/index.html" : "/GalacticGoblinGimmicks/index.html";
     } else {
         console.error("Error: Game iframe not found.");
-    }</script>
-
-    <!-- Fallback message (no JavaScript) -->
+    }
+    </script>
     <noscript>
         <p style="color: var(--primary-text-color); text-align: center;">
             The game requires JavaScript to run. Please enable JavaScript in
             your browser to play the game.
         </p>
     </noscript>
+    -->
 
     <Image
             alt="Preview of Galactic Goblin Gimmicks gameplay"
@@ -100,13 +98,13 @@ import Image from "../../components/Image.astro";
 
     <h2>My role in this project:</h2>
     <p>
-        I took the role of project manager and programmer.
+        I acted as the team lead and the systems programmer.
     </p>
     <h3>My responsibilities included:</h3>
     <ul>
-        <li>Project Management & Coordination</li>
-        <li>Creating the dialogue system (from scratch)</li>
-        <li>Ensuring everyone is comfortable!</li>
+        <li>Team Coordination</li>
+        <li>Scope management</li>
+        <li>Ship fuel & system & Refining system</li>
     </ul>
     <br>
 
