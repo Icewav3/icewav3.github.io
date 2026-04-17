@@ -44,8 +44,12 @@ const {title = "Project"} = Astro.props;
 		display: flex;
 		justify-content: center;
 		align-items: center;
-		/* padding: var(--padding-size) 0; */
 		margin-top: 2rem;
+	}
+
+	/* Section spacing — give h2s breathing room from preceding content */
+	:global(main > h2) {
+		margin-top: 3rem;
 	}
 
 	/* Iframe setup (cascading) */
@@ -55,7 +59,20 @@ const {title = "Project"} = Astro.props;
 		aspect-ratio: 16 / 9;
 		max-width: calc(100vw - 8 * var(--padding-size));
 		max-height: calc(100vh - 8 * var(--padding-size));
-		border: none; /* Remove border */
+		border: none;
 		display: block;
+	}
+
+	/* Responsive itch.io embed */
+	:global(.itch-embed) {
+		display: flex;
+		justify-content: center;
+		width: 100%;
+		margin-top: 2rem;
+	}
+
+	:global(.itch-embed iframe) {
+		max-width: 100%;
+		border: none;
 	}
 </style>

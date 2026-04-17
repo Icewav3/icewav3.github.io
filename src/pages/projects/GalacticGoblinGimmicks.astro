@@ -1,0 +1,121 @@
+﻿---
+import ProjectPageLayout from "../../layouts/ProjectPageLayout.astro";
+import Image from "../../components/Image.astro";
+---
+<ProjectPageLayout title="Galactic Goblin Gimmicks">
+    <h1>Galactic Goblin Gimmicks</h1>
+
+    <p>This is a C# Unity game made over a weekend with 3 other
+        students as a part of PegJam2026</p>
+    <!-- TODO: Re-enable game iframe once sizing is fixed
+    <div class="game-container">
+        <iframe
+                id="gameIframe"
+                src=""
+                title="Galactic Goblin Gimmicks"
+                loading="lazy"
+        ></iframe>
+    </div>
+    <script>
+    const isMobile = /Mobi|Android|iPhone|iPad|iPod|BlackBerry|Windows Phone|webOS/i.test(navigator.userAgent);
+    const iframe = document.getElementById("gameIframe");
+    if (iframe) {
+        iframe.src = isMobile ? "/GalacticGoblinGimmicks/index.html" : "/GalacticGoblinGimmicks/index.html";
+    } else {
+        console.error("Error: Game iframe not found.");
+    }
+    </script>
+    <noscript>
+        <p style="color: var(--primary-text-color); text-align: center;">
+            The game requires JavaScript to run. Please enable JavaScript in
+            your browser to play the game.
+        </p>
+    </noscript>
+    -->
+
+    <Image
+            alt="Preview of Galactic Goblin Gimmicks gameplay"
+            description="A preview of Galactic Goblin Gimmicks gameplay."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksPreview.gif"
+            size="lg"
+    />
+
+    <h2>Objective:</h2>
+    <p>Your objective is to keep the ship's fuel topped up, and get to your destination.</p>
+    <Image
+            alt="The progress bar showing the ship's journey"
+            description="Once this progress bar fills up, you win!"
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksProgressBar.png"
+            size="sm"
+    />
+
+    <h2>Controls:</h2>
+    <p>WASD to move around</p>
+    <p>Break asteroids to collect resources</p>
+    <Image
+            alt="The player breaking an asteroid"
+            description="Asteroids drop fuel chunks that you can pick up."
+            src="/images/GalacticGoblinGimmicks/BreakAsteroid.gif"
+    />
+    <p>Grab fuel from asteroids to keep the ship running</p>
+    <Image
+            alt="The player grabbing fuel from an asteroid"
+            description="The player grabbing fuel from an asteroid."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGrabFuel.gif"
+    />
+    <p>Process the fuel to make it usable</p>
+    <Image
+            alt="The player processing fuel"
+            description="The player processing grabbed fuel into usable fuel."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksProcessFuel.gif"
+    />
+    <p><b>When nearby an interactable</b> W/S will increase or decrease the value indicated by a dial</p>
+    <Image
+            alt="The player using W and S input to update the ship's throttle"
+            description="The player using W and S keys to set the ship's throttle to the green area."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksUpdateShipSpeed.gif"
+    />
+    <p>Keep an eye on the goblin, he's a silly little guy but he will mess with your stuff</p>
+    <Image
+            alt="The goblin on your ship"
+            description="The sneaky bugger messing with the throttle"
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGoblin.gif"
+    />
+
+    <h2>Win & Lose:</h2>
+    <p>Reach your destination with enough fuel to win!</p>
+    <Image
+            alt="The win screen"
+            description="You made it to the end!"
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksWin.gif"
+    />
+    <p>Run out of fuel and it's game over.</p>
+    <Image
+            alt="The lose screen"
+            description="You ran out of fuel :("
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksLose.gif"
+    />
+
+    <h2>My role in this project:</h2>
+    <p>
+        I acted as the team lead and the systems programmer.
+    </p>
+    <h3>My responsibilities included:</h3>
+    <ul>
+        <li>Team Coordination</li>
+        <li>Scope management</li>
+        <li>Ship fuel & system & Refining system</li>
+    </ul>
+
+    <!-- Itch.io Embed -->
+    <!-- frameborder needs to be here -->
+    <!--suppress HtmlDeprecatedAttribute -->
+    <div class="itch-embed">
+        <iframe
+                frameborder="0"
+                src="https://itch.io/embed/4315974?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
+                width="522"
+                height="165"
+        ></iframe>
+    </div>
+</ProjectPageLayout>
