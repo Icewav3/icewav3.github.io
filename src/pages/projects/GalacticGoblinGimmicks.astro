@@ -37,6 +37,7 @@ import Image from "../../components/Image.astro";
             alt="Preview of Galactic Goblin Gimmicks gameplay"
             description="A preview of Galactic Goblin Gimmicks gameplay."
             src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksPreview.gif"
+            size="lg"
     />
 
     <h2>Objective:</h2>
@@ -45,42 +46,41 @@ import Image from "../../components/Image.astro";
             alt="The progress bar showing the ship's journey"
             description="Once this progress bar fills up, you win!"
             src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksProgressBar.png"
+            size="sm"
     />
 
     <h2>Controls:</h2>
-    <ul>
-        <li>WASD to move around</li>
-        <li>Break asteroids to collect resources</li>
-        <Image
-                alt="The player breaking an asteroid"
-                description="Asteroids drop fuel chunks that you can pick up."
-                src="/images/GalacticGoblinGimmicks/BreakAsteroid.gif"
-        />
-        <li>Grab fuel from asteroids to keep the ship running</li>
-        <Image
-                alt="The player grabbing fuel from an asteroid"
-                description="The player grabbing fuel from an asteroid."
-                src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGrabFuel.gif"
-        />
-        <li>Process the fuel to make it usable</li>
-        <Image
-                alt="The player processing fuel"
-                description="The player processing grabbed fuel into usable fuel."
-                src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksProcessFuel.gif"
-        />
-        <li><b>When nearby an interactable</b> W/S will increase or decrease the value indicated by a dial</li>
-        <Image
-                alt="The player using W and S input to update the ship's throttle"
-                description="The player using W and S keys to set the ship's throttle to the green area."
-                src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksUpdateShipSpeed.gif"
-        />
-        <li>Keep an eye on the goblin, he's a silly little guy but he will mess with your stuff</li>
-        <Image
-                alt="The goblin on your ship"
-                description="The sneaky bugger messing with the throttle"
-                src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGoblin.gif"
-        />
-    </ul>
+    <p>WASD to move around</p>
+    <p>Break asteroids to collect resources</p>
+    <Image
+            alt="The player breaking an asteroid"
+            description="Asteroids drop fuel chunks that you can pick up."
+            src="/images/GalacticGoblinGimmicks/BreakAsteroid.gif"
+    />
+    <p>Grab fuel from asteroids to keep the ship running</p>
+    <Image
+            alt="The player grabbing fuel from an asteroid"
+            description="The player grabbing fuel from an asteroid."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGrabFuel.gif"
+    />
+    <p>Process the fuel to make it usable</p>
+    <Image
+            alt="The player processing fuel"
+            description="The player processing grabbed fuel into usable fuel."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksProcessFuel.gif"
+    />
+    <p><b>When nearby an interactable</b> W/S will increase or decrease the value indicated by a dial</p>
+    <Image
+            alt="The player using W and S input to update the ship's throttle"
+            description="The player using W and S keys to set the ship's throttle to the green area."
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksUpdateShipSpeed.gif"
+    />
+    <p>Keep an eye on the goblin, he's a silly little guy but he will mess with your stuff</p>
+    <Image
+            alt="The goblin on your ship"
+            description="The sneaky bugger messing with the throttle"
+            src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksGoblin.gif"
+    />
 
     <h2>Win & Lose:</h2>
     <p>Reach your destination with enough fuel to win!</p>
@@ -89,7 +89,7 @@ import Image from "../../components/Image.astro";
             description="You made it to the end!"
             src="/images/GalacticGoblinGimmicks/GalacticGoblinGimmicksWin.gif"
     />
-    <p>Run out of fuel or health and it's game over.</p>
+    <p>Run out of fuel and it's game over.</p>
     <Image
             alt="The lose screen"
             description="You ran out of fuel :("
@@ -106,14 +106,11 @@ import Image from "../../components/Image.astro";
         <li>Scope management</li>
         <li>Ship fuel & system & Refining system</li>
     </ul>
-    <br>
-
 
     <!-- Itch.io Embed -->
-    <!-- TODO -->
     <!-- frameborder needs to be here -->
     <!--suppress HtmlDeprecatedAttribute -->
-    <div style="display: flex; justify-content: center; width: 100%;">
+    <div class="itch-embed">
         <iframe
                 frameborder="0"
                 src="https://itch.io/embed/4315974?linkback=true&border_width=0&bg_color=71d1ff&fg_color=232323&link_color=071d85&border_color=000000"
